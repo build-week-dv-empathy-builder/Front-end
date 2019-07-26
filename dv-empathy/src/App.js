@@ -1,7 +1,11 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 
-import ListBudgetItems from './components/ListBudgetItems'
+import Login from './components/Login';
+import CalculatorPage from './components/CalculatorPage';
+
 import './App.css';
+
 
 const data = [
   {
@@ -103,7 +107,13 @@ function App() {
   return (
     <div className="App">
       <h1>DV Empathy Builder</h1>
-      <ListBudgetItems data={ data } />
+      <Login />
+
+      <Link exact to="/">Next</Link>
+      <Route path="/" render={() => 
+        <CalculatorPage data={ data }
+        /> }/>
+
     </div>
   );
 }
