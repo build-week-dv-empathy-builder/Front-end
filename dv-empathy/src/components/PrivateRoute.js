@@ -9,7 +9,7 @@ export default function(props) {
 
 	return (
 		<Route {...rest} render={() => {
-			const token = '1234' // CHANGE THIS WHEN READY
+			const token = localStorage.getItem('token')
 
 			return token
 				? <Component />
