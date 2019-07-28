@@ -1,21 +1,32 @@
 import React from 'react';
-import { Button, Input } from 'reactstrap';
+import { Button, Input, Form, Label, FormGroup } from 'reactstrap';
 
 class Login extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      name: '',
+      email: '',
       password: ''
     }
   }
 
   handleChange = event => {
-    event.preventDefault();
-
     this.setState({
       [event.target.name]: event.target.value
     })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+
+    const { email, password } = this.state
+    this.props.login(email, password)
+      .then((res) => {
+        this.props.history.push('/admin')
+      })
+      .catch((err) => {
+        console.log("error showing admin page", err)
+      })
   }
 
   render() {
@@ -23,9 +34,18 @@ class Login extends React.Component {
 
     return(
       <div>
-        <Input onChange={this.handleChange} name="email" value={ email } />
-        <Input onChange={this.handleChange} name="password" value={ password } />
-        <Button>Login</Button>
+        <Form inline onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Label for="email"></Label>
+            <Input onChange={this.handleChange} name="email" value={ email } />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password"></Label>
+            <Input onChange={this.handleChange} name="password" value={ password } />   
+          </FormGroup>
+          <Button type="submit">Login</Button>    
+        </Form>
+        
       </div>
     )
   }
