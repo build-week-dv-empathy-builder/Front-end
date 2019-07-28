@@ -1,5 +1,6 @@
 import React from 'react'
-import { Input, Label, Form } from 'reactstrap'
+import { Input, Label, Form, Button } from 'reactstrap'
+import axios from 'axios'
 
 class InputRelocationCosts extends React.Component {
     constructor() {
@@ -15,14 +16,22 @@ class InputRelocationCosts extends React.Component {
         })
     }
 
+    handleSubmit = (event) => {
+        // event.preventDefault()
+        // axios.post('')
+        //     .then()
+        //     .catch()
+    }
+
     render() {
         const { rent } = this.state
         return (
             <div>
                 <h1>INPUT RELOCATION COSTS</h1>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Label for="rent">Rent: </Label>
                     <Input name="rent" value={rent} onChange={this.handleChange} />
+                    <Button type="submit">Submit</Button>
                 </Form>
                 
             </div>
