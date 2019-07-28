@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ListBudgetItems from './ListBudgetItems';
+import InputDemographics from './InputDemographics'
 
 const CalculatorPage = (props) => {
   return(
     <div>
-      <ListBudgetItems data={ props.data } />
+      <InputDemographics />
     </div>
   );
 }
