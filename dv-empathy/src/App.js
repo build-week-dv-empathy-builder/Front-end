@@ -21,7 +21,7 @@ class App extends React.Component {
       "password": password
     }
 
-    axios.post('https://dv-empathy-builder.herokuapp.com/api/auth/login', payload)
+    return axios.post('https://dv-empathy-builder.herokuapp.com/api/auth/login', payload)
       .then((res) => {
         localStorage.setItem('token', res.data.user.token)
         console.log(`log in successfull: `, res.data.message)
@@ -43,11 +43,12 @@ class App extends React.Component {
         </nav>
         <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
         <Route exact path="/calculator/budget" render={() => <InputPersonalBudget />} />
-        <Route path="/login" render={() => <Login login={this.login}/>} />
         <Route exact path="/calculator" render={() => <Calculator />} />
         <Route exact path="/" render={() => <Home />} />
-        
+
         <PrivateRoute exact path="/admin" component={AdminDash} />
+        <Route path="/login" render={(props) => <Login {...props} login={this.login}/>} />
+        
         {/* <Route path="/" render={() => 
           <CalculatorPage data={ data }
           /> }/> */}

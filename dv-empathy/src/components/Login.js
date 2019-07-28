@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Input, Form } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       email: '',
       password: ''
@@ -21,7 +22,13 @@ class Login extends React.Component {
 
     const { email, password } = this.state
     this.props.login(email, password)
-      }
+      .then((res) => {
+        this.props.history.push('/admin')
+      })
+      .catch((err) => {
+        console.log("error showing admin page", err)
+      })
+  }
 
   render() {
     const { email, password } = this.state;
