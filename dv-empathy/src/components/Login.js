@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Form } from 'reactstrap';
+import { Button, Input, Form, Label, FormGroup } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -35,10 +35,16 @@ class Login extends React.Component {
 
     return(
       <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Input onChange={this.handleChange} name="email" value={ email } />
-          <Input onChange={this.handleChange} name="password" value={ password } />
-          <Button type="submit">Login</Button>
+        <Form inline onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Label for="email"></Label>
+            <Input onChange={this.handleChange} name="email" value={ email } />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password"></Label>
+            <Input onChange={this.handleChange} name="password" value={ password } />   
+          </FormGroup>
+          <Button type="submit">Login</Button>    
         </Form>
         
       </div>

@@ -1,21 +1,25 @@
 import React from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
-
-
-// import AdminDash from './components/AdminDash';
-
-
-// import '../App.css'
+import { Button } from 'reactstrap'
 
 class App extends React.Component {
-  
-  render() {
-    return (
-      <>
-        <h1>ADMIN DASHBOARD</h1>
-  
-      </>
-    );
+    constructor(){
+        super()
+    }
+
+    logout = (event) => {
+        event.preventDefault()
+        localStorage.removeItem('token')
+        this.props.history.push('/login')
+    }
+    render() {
+        return (
+        <>
+            <Button onClick={this.logout}>Logout</Button>
+            <h1>ADMIN DASHBOARD</h1>
+    
+        </>
+        );
     }
   }
 
