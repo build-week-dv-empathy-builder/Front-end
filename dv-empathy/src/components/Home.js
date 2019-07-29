@@ -8,11 +8,14 @@ function Home() {
     return (
         <div>
             <h1>Home</h1>
+ private-route
+            <h3>Vision</h3>
+            <p>We envision a world where survivors have sustaining income, savings and credit with which to build wealth and the resources to support individual, intergenerational and community healing.</p>
             <br />
-            <h3>From our CEO:</h3>
-            <p>We live in a society that encourages survivors to leave, but tells them that once they do, they’re on their own to figure the rest out. Do we actually want to end domestic violence in this country? Because if we do, we need to widen our understanding of the problem, and dare to dream of a society in which survivors have the resources to support their healing.</p>
-        <Link to="/calculator">Start Calculator</Link>
-        
+            <p>We envision a world where harm-doers are held financially accountable and survivors are not saddled with the cost of being harmed.</p>
+            <br /> 
+            <p>We envision a world where gender-based violence receives the attention necessary to address it as a systemic issue.</p>
+                <Link to="/calculator">Start Calculator</Link>  
         </div>
     )
 }

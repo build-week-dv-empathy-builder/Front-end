@@ -65,30 +65,30 @@ export default [
     
         //child care
         //personal budget
-        transportation: 50,
-        food: 200,
-        health_care: 0,
-        car_loans: 0,
-        personal_loans: 0,
-        personal_other: 200,
-        personal_budget_total: 450,
+        transportation: "50",
+        food: "200",
+        health_care: "0",
+        car_loans: "0",
+        personal_loans: "0",
+        personal_other: "200",
+        personal_budget_total: "450",
     
         //relocation budget
-        travel_costs: 50,
-        rental_deposit: 500,
-        utility_connection: 100,
-        storage_unit: 50,
-        rent: 600,
-        car_rental: 0,
-        cell_phone: 100,
-        moving_truck: 300,
-        mental_health: 0,
-        income_loss: 0,
-        additional_security: 100,
-        relocation_other: 200,
-        relocation_budget_total: 2000,
+        "travel_costs": "50",
+        "rental_deposit": "500",
+        "utility_connection": "100",
+        "storage_unit": "50",
+        "rent": "600",
+        "car_rental": "0",
+        "cell_phone": "100",
+        "moving_truck": "300",
+        "mental_health": "0",
+        "income_loss": "0",
+        "additional_security": "100",
+        "relocation_other": "200",
+        "relocation_budget_total": "2000",
     
         //calculated results
-        calculated_difference: 1450,
+        "calculated_difference": "1450",
       }
 ]
