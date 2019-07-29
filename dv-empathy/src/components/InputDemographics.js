@@ -17,7 +17,7 @@ class InputDemographics extends React.Component {
             orientation: "",
             age: "",
             race: "",
-            safe_status: null,
+            safe_status: 'safe',
             employed: null,
             partner_employed: null,
             children: null,
@@ -60,9 +60,9 @@ class InputDemographics extends React.Component {
                 <Form>
                     <FormGroup>
                         <Label for="age">Age: </Label>
-                        <Input name="age" value={age} onChange={this.handleChange} />
+                        <Input type="number" name="age" value={age} onChange={this.handleChange} />
                     <FormGroup>
-                        <Label for ="sex" >Gender: </Label>
+                        <Label for ="sex" >Sex: </Label>
                         <Input name="sex" value={sex} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
@@ -78,10 +78,43 @@ class InputDemographics extends React.Component {
                             {orientationdata.map(data => {
                                 return <option>{data}</option>
                             })}
-                        </Input>
-                        
+                        </Input>                        
                     </FormGroup>
-                    
+                    <FormGroup>
+                        <Label for="relationship_status">Relationship Status: </Label>
+                        <Input type="select" name="relationship_status" value={relationship_status} onChange={this.handleChange} >
+                            <option>Married</option>
+                            <option>Complicated</option>
+                            <option>Single</option>
+                            <option>Divorced</option>
+                            <option>Seperated</option>
+                            <option>In a relationship</option>
+                            <option>In an open relationship</option>
+                            <option>In a civil union</option>
+                            <option>In a domestic partnership</option>
+                        </Input>                        
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="safe_status">Safe Status: </Label>
+                        <Input type="select" name="safe_status" value={safe_status} onChange={this.handleChange} >
+                            <option>Yes</option>
+                            <option>No</option>                            
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="employed">Employed?</Label>
+                        <Input type="select" name="employed" value={employed} onChange={this.handleChange}>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="partner_employed">Partner Employed?</Label>
+                        <Input type="select" name="partner_employed" value={partner_employed} onChange={this.handleChange}>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </Input>
+                    </FormGroup>
                 </Form>
             <Link to="/calculator/budget">Continue to next section</Link>
             </div>
