@@ -23,10 +23,13 @@ class InputDemographics extends React.Component {
             <div>
                 <h1>INPUT DEMOGRAPHICS</h1>
                 <Form>
-                    <Label for="age">Age: </Label>
-                    <Input name="age" value={age} onChange={this.handleChange} />
-                    <Label for ="sex" >Gender: </Label>
-                    <Input name="sex" value={sex} onChange={this.handleChange} />
+                    <FormGroup>
+                        <Label for="age">Age: </Label>
+                        <Input name="age" value={age} onChange={this.handleChange} />
+                        <Label for ="sex" >Gender: </Label>
+                        <Input name="sex" value={sex} onChange={this.handleChange} />
+                    </FormGroup>
+                    
                 </Form>
             <Link to="/calculator/budget">Continue to next section</Link>
             </div>
