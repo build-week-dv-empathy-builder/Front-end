@@ -45,62 +45,62 @@ class InputRelocationCosts extends React.Component {
                 <Form onSubmit={ this.handleSubmit }>
 
                     <Label for="travel_costs">Travel Cost(s): </Label>
-                    <Input name="travel_costs" value={ travel_costs } onChange={ this.handleChange } />
+                    <Input type="number" name="travel_costs" value={ travel_costs } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="rental_deposit">Rental Deposit: </Label>
-                    <Input name="rental_deposit" value={ rental_deposit } onChange={ this.handleChange } />
+                    <Input type="number" name="rental_deposit" value={ rental_deposit } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="utility_connection">Utility Connection: </Label>
-                    <Input name="utility_connection" value={ utility_connection } onChange={ this.handleChange } />
+                    <Input type="number" name="utility_connection" value={ utility_connection } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="storage_unit">Storage Unit: </Label>
-                    <Input name="storage_unit" value={ storage_unit } onChange={ this.handleChange } />
+                    <Input type="number" name="storage_unit" value={ storage_unit } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="rent">Rent: </Label>
-                    <Input name="rent" value={ rent } onChange={ this.handleChange } />
+                    <Input type="number" name="rent" value={ rent } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="car_rental">Car Rental: </Label>
-                    <Input name="car_rental" value={ car_rental } onChange={ this.handleChange } />
+                    <Input type="number" name="car_rental" value={ car_rental } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="cell_phone">Cell Phone: </Label>
-                    <Input name="cell_phone" value={ cell_phone } onChange={ this.handleChange } />
+                    <Input type="number" name="cell_phone" value={ cell_phone } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="moving_truck">Moving Truck: </Label>
-                    <Input name="moving_truck" value={ moving_truck } onChange={ this.handleChange } />
+                    <Input type="number" name="moving_truck" value={ moving_truck } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="mental_health">Mental Health: </Label>
-                    <Input name="mental_health" value={ mental_health } onChange={ this.handleChange } />
+                    <Input type="number" name="mental_health" value={ mental_health } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="income_loss">Income Loss: </Label>
-                    <Input name="income_loss" value={ income_loss } onChange={ this.handleChange } />
+                    <Input type="number" type="number" name="income_loss" value={ income_loss } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="additional_security">Additional Security: </Label>
-                    <Input name="additional_security" value={ additional_security } onChange={ this.handleChange } />
+                    <Input type="number" type="number" name="additional_security" value={ additional_security } onChange={ this.handleChange } />
 
                     <br />
 
                     <Label for="relocation_other">Other Relocation Cost(s): </Label>
-                    <Input name="relocation_other" value={ relocation_other } onChange={ this.handleChange } />
+                    <Input type="number" name="relocation_other" value={ relocation_other } onChange={ this.handleChange } />
 
                     <br />
                     <Button type="submit">Submit</Button>
@@ -111,4 +111,4 @@ class InputRelocationCosts extends React.Component {
     }
 }
 
-export default InputRelocationCosts
+export default InputRelocationCosts;
