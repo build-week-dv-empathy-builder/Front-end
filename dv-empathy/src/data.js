@@ -25,7 +25,7 @@ export default [
         car_loans: 0,
         personal_loans: 0,
         personal_other: 200,
-        personal_budget_total: 450,
+        personal_budget_total: 450, // we'll need to calculate this in the backgroud
     
         //relocation budget
         travel_costs: 50,
