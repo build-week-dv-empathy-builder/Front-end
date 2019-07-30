@@ -30,29 +30,16 @@ class InputPersonalBudget extends React.Component {
         });
     }
 
-    saveData = () => {
-        const { 
-            transportation,
-            food,
-            health_care,
-            car_loans,
-            personal_loans,
-            personal_other,
-            personal_budget_total,
-            personal_savings,
-            individual_income, 
-            
-        } = this.state
-
-        localStorage.setItem('transportation', transportation)
-        localStorage.setItem('food', food)
-        localStorage.setItem('health_care', health_care)
-        localStorage.setItem('car_loans', car_loans)
-        localStorage.setItem('personal_loans', personal_loans)
-        localStorage.setItem('personal_other', personal_other)
-        localStorage.setItem('personal_budget_total', personal_budget_total)
-        localStorage.setItem('personal_savings', personal_savings)
-        localStorage.setItem('individual_income', individual_income)       
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
     }
 
     render() {

@@ -102,22 +102,16 @@ class InputRelocationCosts extends React.Component {
             })
     }
 
-    saveData = () => {
-        const { travel_costs, rental_deposit, utility_connection, storage_unit, rent, car_rental, cell_phone, moving_truck, mental_health, income_loss, additional_security, relocation_other } = this.state
-
-        localStorage.setItem('travel_costs',travel_costs)
-        localStorage.setItem('rental_deposit',rental_deposit)
-        localStorage.setItem('utility_connection',utility_connection)
-        localStorage.setItem('storage_unit',storage_unit)
-        localStorage.setItem('rent',rent)
-        localStorage.setItem('car_rental',car_rental)
-        localStorage.setItem('cell_phone',cell_phone)
-        localStorage.setItem('moving_truck',moving_truck)
-        localStorage.setItem('mental_health',mental_health)
-        localStorage.setItem('income_loss',income_loss)
-        localStorage.setItem('additional_security',additional_security)
-        localStorage.setItem('relocation_other',relocation_other)
-
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
     }
 
     render() {
