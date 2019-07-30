@@ -30,31 +30,16 @@ class InputDemographics extends React.Component {
         })
     }
 
-    saveData = () => {
-        const { 
-            age,
-            sex,
-            relationship_status,
-            orientation,
-            race,
-            safe_status,
-            employed,
-            partner_employed,
-            current_location,
-            desired_relocation,
-            children, } = this.state
-
-        localStorage.setItem('age', age)
-        localStorage.setItem('sex', sex)
-        localStorage.setItem('relationship_status', relationship_status)
-        localStorage.setItem('orientation', orientation)
-        localStorage.setItem('race', race)
-        localStorage.setItem('safe_status', safe_status)
-        localStorage.setItem('employed', employed)
-        localStorage.setItem('partner_employed', partner_employed)
-        localStorage.setItem('children', children)
-        localStorage.setItem('current_location', current_location)
-        localStorage.setItem('desired_relocation', desired_relocation)       
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
     }
 
     render() {
