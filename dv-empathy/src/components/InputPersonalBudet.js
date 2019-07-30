@@ -13,14 +13,14 @@ class InputPersonalBudget extends React.Component {
     constructor() {
         super()
         this.state = {
-            individual_income: '',
-            personal_savings: '',
-            transportation: '',
-            food: '',
-            health_care: '',
-            car_loans: '',
-            personal_loans: '',
-            personal_other: '',  
+            individual_income: localStorage.getItem('individual_income'),
+            personal_savings: localStorage.getItem('personal_savings'),
+            transportation: localStorage.getItem('transportation'),
+            food: localStorage.getItem('food'),
+            health_care: localStorage.getItem('health_care'),
+            car_loans: localStorage.getItem('car_loans'),
+            personal_loans: localStorage.getItem('personal_loans'),
+            personal_other: localStorage.getItem('personal_other'),
         }
     }
 
@@ -28,6 +28,18 @@ class InputPersonalBudget extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
+    }
+
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
     }
 
     render() {
@@ -139,7 +151,7 @@ class InputPersonalBudget extends React.Component {
                     <br />
                     
                 </Form>
-                <Link to="/calculator/relocation-costs">Continue to next section</Link>
+                <Link to="/calculator/relocation-costs" onClick={this.saveData}>Continue to next section</Link>
             </div>
         )
     }

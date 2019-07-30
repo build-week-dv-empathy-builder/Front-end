@@ -10,9 +10,8 @@ class InputDemographics extends React.Component {
     constructor() {
         super()
         this.state = {
-            // current_location: 81401,
-            // timestamp: 20181026,
-            // desired_relocation: 87401,
+            current_location: localStorage.getItem('current_location'),
+            desired_relocation: localStorage.getItem('desired_relocation'),
             sex: localStorage.getItem('sex'),
             relationship_status: localStorage.getItem('relationship_status'),
             orientation: localStorage.getItem('orientation'),
@@ -31,7 +30,19 @@ class InputDemographics extends React.Component {
         })
     }
 
-    saveData = () => {
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
+    }
+
+    render() {
         const { 
             age,
             sex,
@@ -41,29 +52,9 @@ class InputDemographics extends React.Component {
             safe_status,
             employed,
             partner_employed,
-            children } = this.state
-
-        localStorage.setItem('age', age)
-        localStorage.setItem('sex', sex)
-        localStorage.setItem('relationship_status', relationship_status)
-        localStorage.setItem('orientation', orientation)
-        localStorage.setItem('race', race)
-        localStorage.setItem('safe_status', safe_status)
-        localStorage.setItem('employed', employed)
-        localStorage.setItem('partner_employed', partner_employed)
-        localStorage.setItem('children', children)
-    }
-
-    render() {
-        const { age,
-                sex,
-                relationship_status,
-                orientation,
-                race,
-                safe_status,
-                employed,
-                partner_employed,
-                children } = this.state
+            current_location,
+            desired_relocation,
+            children, } = this.state
 
         return (
             <div>
@@ -76,14 +67,24 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for ="sex" >Sex: </Label>
                         <Input type="select" name="sex" value={sex} onChange={this.handleChange}>
+                            <option></option>
                             {sexdata.map(data => {
                                 return <option>{data}</option>
                             })}
                         </Input>
                     </FormGroup>
                     <FormGroup>
+                        <Label for="current_location">Current Location (Zip/Postal Code)</Label>
+                        <Input type="number" name ="current_location" value={current_location} onChange={this.handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="desired_relocation">Desired Location (Zip/Postal Code)</Label>
+                        <Input type="number" name ="desired_relocation" value={desired_relocation} onChange={this.handleChange} />
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="orientation">Orientation: </Label>
                         <Input type="select" name="orientation" value={orientation} onChange={this.handleChange}>
+                            <option></option>
                             {orientationdata.map(data => {
                                 return <option>{data}</option>
                             })}
@@ -92,6 +93,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for ="race" >Race: </Label>
                         <Input type="select" name="race" value={race} onChange={this.handleChange}>
+                            <option></option>
                             {racedata.map(data => {
                                 return <option>{data}</option>
                             })}
@@ -101,6 +103,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="relationship_status">Relationship Status: </Label>
                         <Input type="select" name="relationship_status" value={relationship_status} onChange={this.handleChange} >
+                            <option></option>
                             <option>Married</option>
                             <option>Complicated</option>
                             <option>Single</option>
@@ -115,22 +118,25 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="safe_status">Safe Status: </Label>
                         <Input type="select" name="safe_status" value={safe_status} onChange={this.handleChange} >
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>                            
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>                            
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="employed">Employed?</Label>
                         <Input type="select" name="employed" value={employed} onChange={this.handleChange}>
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="partner_employed">Partner Employed?</Label>
                         <Input type="select" name="partner_employed" value={partner_employed} onChange={this.handleChange}>
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>

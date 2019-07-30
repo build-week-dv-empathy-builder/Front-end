@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { 
     Input, 
     Label, 
-    Form, 
+    Form,
     Button, 
     UncontrolledPopover, 
     PopoverHeader, 
@@ -14,18 +15,18 @@ class InputRelocationCosts extends React.Component {
     constructor() {
         super()
         this.state = {
-            travel_costs: '',
-            rental_deposit: '',
-            utility_connection: '',
-            storage_unit: '',
-            rent: '',
-            car_rental: '',
-            cell_phone: '',
-            moving_truck: '',
-            mental_health: '',
-            income_loss: '',
-            additional_security: '',
-            relocation_other: '',
+            travel_costs: localStorage.getItem('travel_costs'),
+            rental_deposit: localStorage.getItem('rental_deposit'),
+            utility_connection: localStorage.getItem('utility_connection'),
+            storage_unit: localStorage.getItem('storage_unit'),
+            rent: localStorage.getItem('rent'),
+            car_rental: localStorage.getItem('car_rental'),
+            cell_phone: localStorage.getItem('cell_phone'),
+            moving_truck: localStorage.getItem('moving_truck'),
+            mental_health: localStorage.getItem('mental_health'),
+            income_loss: localStorage.getItem('income_loss'),
+            additional_security: localStorage.getItem('additional_security'),
+            relocation_other: localStorage.getItem('relocation_other'),
         }
     }
 
@@ -36,6 +37,11 @@ class InputRelocationCosts extends React.Component {
     }
 
     handleSubmit = (event) => {
+        
+
+
+        /*** TODO *** 
+         * THIS WILL BE MOVED TO THE COMPONENT THAT CALCULATES AND SENDS THE DATA  */
         const headers = {
             authorization: localStorage.getItem('token')    
         }
@@ -97,6 +103,18 @@ class InputRelocationCosts extends React.Component {
             })
     }
 
+    saveData = () => {        
+        // Loop through each property in the clone of state (data)
+        // Check if the property is this specficic class or a prototype property
+        // If the current property is its own property, store it in localStorage
+        const data = {...this.state}
+        for(let property in data) {
+            if(data.hasOwnProperty(property)) {
+                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+            }
+        }
+    }
+
     render() {
         const { travel_costs, rental_deposit, utility_connection, storage_unit, rent, car_rental, cell_phone, moving_truck, mental_health, income_loss, additional_security, relocation_other } = this.state
 
@@ -105,7 +123,7 @@ class InputRelocationCosts extends React.Component {
                 <h1>INPUT RELOCATION COSTS</h1>
                 <br />
 
-                <Form onSubmit={ this.handleSubmit }>
+                <Form onSubmit={ this.saveData }>
 
                     <Label for="travel_costs">Travel Cost(s): </Label>
                     <Input 
@@ -291,7 +309,7 @@ class InputRelocationCosts extends React.Component {
                     </UncontrolledPopover>
 
                     <br />
-                    <Button type="submit">Submit</Button>
+                    <Link to="./results" onClick={this.saveData}>Continue to see results</Link>
                 </Form>
                 
             </div>
