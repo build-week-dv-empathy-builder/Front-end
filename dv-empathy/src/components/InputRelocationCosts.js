@@ -1,5 +1,13 @@
 import React from 'react'
-import { Input, Label, Form, Button } from 'reactstrap'
+import { 
+    Input, 
+    Label, 
+    Form, 
+    Button, 
+    UncontrolledPopover, 
+    PopoverHeader, 
+    PopoverBody 
+} from 'reactstrap'
 import axios from 'axios'
 
 class InputRelocationCosts extends React.Component {
@@ -100,62 +108,187 @@ class InputRelocationCosts extends React.Component {
                 <Form onSubmit={ this.handleSubmit }>
 
                     <Label for="travel_costs">Travel Cost(s): </Label>
-                    <Input name="travel_costs" value={ travel_costs } onChange={ this.handleChange } />
+                    <Input 
+                        id="TravelCosts"
+                        type="number" 
+                        name="travel_costs" 
+                        value={ travel_costs } 
+                        onChange={ this.handleChange }
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="TravelCosts">
+                    <PopoverHeader>Travel Costs:</PopoverHeader>
+                    <PopoverBody>Include Snacks, Gas, Eating out, Drinks, Extra money for incidentals.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="rental_deposit">Rental Deposit: </Label>
-                    <Input name="rental_deposit" value={ rental_deposit } onChange={ this.handleChange } />
+                    <Input 
+                        type="number" 
+                        name="rental_deposit" 
+                        value={ rental_deposit } 
+                        onChange={ this.handleChange } 
+                    />
 
                     <br />
 
                     <Label for="utility_connection">Utility Connection: </Label>
-                    <Input name="utility_connection" value={ utility_connection } onChange={ this.handleChange } />
+                    <Input 
+                        id="UtilityConnection"
+                        type="number" 
+                        name="utility_connection" 
+                        value={ utility_connection } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="UtilityConnection">
+                    <PopoverHeader>Utility Connections:</PopoverHeader>
+                    <PopoverBody>Add all utility connections for final input.
+                    <br />
+                    Include Gas, Water, Electricity.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="storage_unit">Storage Unit: </Label>
-                    <Input name="storage_unit" value={ storage_unit } onChange={ this.handleChange } />
+                    <Input 
+                        type="number" 
+                        name="storage_unit" 
+                        value={ storage_unit } 
+                        onChange={ this.handleChange } 
+                    />
 
                     <br />
 
                     <Label for="rent">Rent: </Label>
-                    <Input name="rent" value={ rent } onChange={ this.handleChange } />
+                    <Input 
+                        type="number" 
+                        name="rent" 
+                        value={ rent } 
+                        onChange={ this.handleChange } 
+                    />
 
                     <br />
 
                     <Label for="car_rental">Car Rental: </Label>
-                    <Input name="car_rental" value={ car_rental } onChange={ this.handleChange } />
+                    <Input 
+                        id="CarRental"
+                        type="number" 
+                        name="car_rental" 
+                        value={ car_rental } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="CarRental">
+                    <PopoverHeader>Car Rental:</PopoverHeader>
+                    <PopoverBody>Add all expenses needed to rent a car. 
+                    <br />
+                    Includes Car Rental, Gas during trip, Refill tank before returning, Insurance, Etc.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="cell_phone">Cell Phone: </Label>
-                    <Input name="cell_phone" value={ cell_phone } onChange={ this.handleChange } />
+                    <Input 
+                        id="CellPhone"
+                        type="number" 
+                        name="cell_phone" 
+                        value={ cell_phone } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="CellPhone">
+                    <PopoverHeader>Cell Phone:</PopoverHeader>
+                    <PopoverBody>Add all expenses needed for switching over a cell phone. 
+                    <br />
+                    Includes: Disconnecting from pervious phone company if terminating early/out of contract/flex programs, Connection to new cell phone company, Cost of phone, Etc.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="moving_truck">Moving Truck: </Label>
-                    <Input name="moving_truck" value={ moving_truck } onChange={ this.handleChange } />
+                    <Input 
+                        id="MovingTruck"
+                        type="number" 
+                        name="moving_truck" 
+                        value={ moving_truck } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="MovingTruck">
+                    <PopoverHeader>Moving Truck:</PopoverHeader>
+                    <PopoverBody>Add all expenses needed for moving truck for total.
+                    <br />
+                    Includes Size of truck, Insurance, Mileage, Movers help, Gas for trip, Return of truck with full tank, Etc.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="mental_health">Mental Health: </Label>
-                    <Input name="mental_health" value={ mental_health } onChange={ this.handleChange } />
+                    <Input 
+                        id="MentalHealth"
+                        type="number" 
+                        name="mental_health" 
+                        value={ mental_health } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="MentalHealth">
+                    <PopoverHeader>Mental Health:</PopoverHeader>
+                    <PopoverBody>Add all expenses associated with Mental Health help. <br />
+                    Includes Doctor's visits, Medications, Therapist/therapy, Travel to office/pharmacy, Wages lost due to time off work, Etc.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="income_loss">Income Loss: </Label>
-                    <Input name="income_loss" value={ income_loss } onChange={ this.handleChange } />
+                    <Input 
+                        id="IncomeLoss"
+                        type="number" 
+                        name="income_loss" 
+                        value={ income_loss } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="IncomeLoss">
+                    <PopoverHeader>Income Loss:</PopoverHeader>
+                    <PopoverBody>Add all and any loss of income for total.
+                    <br />
+                    Include Lost wages from leaving job, Spouse wage, Etc. </PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="additional_security">Additional Security: </Label>
-                    <Input name="additional_security" value={ additional_security } onChange={ this.handleChange } />
+                    <Input 
+                        id="Security"
+                        type="number" 
+                        name="additional_security" 
+                        value={ additional_security } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="Security">
+                    <PopoverHeader>Additional Security:</PopoverHeader>
+                    <PopoverBody>Includes New service of home security system, Monthly payment, Equipment charge, Etc.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
 
                     <Label for="relocation_other">Other Relocation Cost(s): </Label>
-                    <Input name="relocation_other" value={ relocation_other } onChange={ this.handleChange } />
+                    <Input 
+                        id="RelocationOther"
+                        type="number" 
+                        name="relocation_other" 
+                        value={ relocation_other } 
+                        onChange={ this.handleChange } 
+                    />
+
+                    <UncontrolledPopover trigger="focus" placement="bottom" target="RelocationOther">
+                    <PopoverHeader>Relocation Other:</PopoverHeader>
+                    <PopoverBody>Add any relocation costs that are not within the fields above.</PopoverBody>
+                    </UncontrolledPopover>
 
                     <br />
                     <Button type="submit">Submit</Button>
@@ -166,4 +299,4 @@ class InputRelocationCosts extends React.Component {
     }
 }
 
-export default InputRelocationCosts
+export default InputRelocationCosts;

@@ -1,8 +1,6 @@
 import React from 'react'
-import { Button } from 'reactstrap'
 import { Link, Route } from 'react-router-dom'
-import CalculatorPage from './CalculatorPage';
-import InputCost from './InputCost';
+
 
 function Home() {
     return (
