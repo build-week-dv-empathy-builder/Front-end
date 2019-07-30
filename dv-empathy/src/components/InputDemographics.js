@@ -3,7 +3,8 @@ import { Input, Label, Form, FormGroup } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import racedata from '../racedata'
-import orientationdata from '../orientationdata'
+import orientationdata from '../genderdata'
+import sexdata from '../sexdata'
 
 class InputDemographics extends React.Component {
     constructor() {
@@ -15,7 +16,7 @@ class InputDemographics extends React.Component {
             sex: "",
             relationship_status: "",
             orientation: "",
-            age: "",
+            age: 0,
             race: "",
             safe_status: 'safe',
             employed: null,
@@ -61,9 +62,22 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="age">Age: </Label>
                         <Input type="number" name="age" value={age} onChange={this.handleChange} />
+                    </FormGroup>
                     <FormGroup>
                         <Label for ="sex" >Sex: </Label>
-                        <Input name="sex" value={sex} onChange={this.handleChange} />
+                        <Input type="select" name="sex" value={sex} onChange={this.handleChange}>
+                            {sexdata.map(data => {
+                                return <option>{data}</option>
+                            })}
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="orientation">Orientation: </Label>
+                        <Input type="select" name="orientation" value={orientation} onChange={this.handleChange}>
+                            {orientationdata.map(data => {
+                                return <option>{data}</option>
+                            })}
+                        </Input>                        
                     </FormGroup>
                     <FormGroup>
                         <Label for ="race" >Race: </Label>
@@ -73,13 +87,7 @@ class InputDemographics extends React.Component {
                             })}
                         </Input>
                     </FormGroup>
-                        <Label for="orientation">Orientation: </Label>
-                        <Input type="select" name="orientation" value={orientation} onChange={this.handleChange}>
-                            {orientationdata.map(data => {
-                                return <option>{data}</option>
-                            })}
-                        </Input>                        
-                    </FormGroup>
+                    
                     <FormGroup>
                         <Label for="relationship_status">Relationship Status: </Label>
                         <Input type="select" name="relationship_status" value={relationship_status} onChange={this.handleChange} >
@@ -97,22 +105,22 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="safe_status">Safe Status: </Label>
                         <Input type="select" name="safe_status" value={safe_status} onChange={this.handleChange} >
-                            <option>Yes</option>
-                            <option>No</option>                            
+                            <option value={true}>Yes</option>
+                            <option value={false}>No</option>                            
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="employed">Employed?</Label>
                         <Input type="select" name="employed" value={employed} onChange={this.handleChange}>
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value={true}>Yes</option>
+                            <option value={false}>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="partner_employed">Partner Employed?</Label>
                         <Input type="select" name="partner_employed" value={partner_employed} onChange={this.handleChange}>
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value={true}>Yes</option>
+                            <option value={false}>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
