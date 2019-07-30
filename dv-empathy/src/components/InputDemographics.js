@@ -13,15 +13,15 @@ class InputDemographics extends React.Component {
             // current_location: 81401,
             // timestamp: 20181026,
             // desired_relocation: 87401,
-            sex: "",
-            relationship_status: "",
-            orientation: "",
-            age: 0,
-            race: "",
-            safe_status: 'safe',
-            employed: null,
-            partner_employed: null,
-            children: null,
+            sex: localStorage.getItem('sex'),
+            relationship_status: localStorage.getItem('relationship_status'),
+            orientation: localStorage.getItem('orientation'),
+            age: localStorage.getItem('age'),
+            race: localStorage.getItem('race'),
+            safe_status: localStorage.getItem('safe_status'),
+            employed: localStorage.getItem('employed'),
+            partner_employed: localStorage.getItem('partner_employed'),
+            children: localStorage.getItem('children'),
         }
     }
 
@@ -31,18 +31,28 @@ class InputDemographics extends React.Component {
         })
     }
 
-    // current_location: 81401,
-    // timestamp: 20181026,
-    // desired_relocation: 87401,
-    // sex: "male",
-    // relationship_status: "married",
-    // orientation: "straight",
-    // age: 28,
-    // race: "white",
-    // safe_status: "yes",
-    // employed: "no",
-    // partner_employed: "yes",
-    // children: "yes",
+    saveData = () => {
+        const { 
+            age,
+            sex,
+            relationship_status,
+            orientation,
+            race,
+            safe_status,
+            employed,
+            partner_employed,
+            children } = this.state
+
+        localStorage.setItem('age', age)
+        localStorage.setItem('sex', sex)
+        localStorage.setItem('relationship_status', relationship_status)
+        localStorage.setItem('orientation', orientation)
+        localStorage.setItem('race', race)
+        localStorage.setItem('safe_status', safe_status)
+        localStorage.setItem('employed', employed)
+        localStorage.setItem('partner_employed', partner_employed)
+        localStorage.setItem('children', children)
+    }
 
     render() {
         const { age,
@@ -128,7 +138,7 @@ class InputDemographics extends React.Component {
                         <Input type="number" name="children" value={children} onChange={this.handleChange} />
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/budget">Continue to next section</Link>
+            <Link to="/calculator/budget" onClick={this.saveData}>Continue to next section</Link>
             </div>
         )
     }
