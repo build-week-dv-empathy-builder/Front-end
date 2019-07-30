@@ -82,6 +82,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for ="sex" >Sex: </Label>
                         <Input type="select" name="sex" value={sex} onChange={this.handleChange}>
+                            <option></option>
                             {sexdata.map(data => {
                                 return <option>{data}</option>
                             })}
@@ -98,6 +99,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="orientation">Orientation: </Label>
                         <Input type="select" name="orientation" value={orientation} onChange={this.handleChange}>
+                            <option></option>
                             {orientationdata.map(data => {
                                 return <option>{data}</option>
                             })}
@@ -106,6 +108,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for ="race" >Race: </Label>
                         <Input type="select" name="race" value={race} onChange={this.handleChange}>
+                            <option></option>
                             {racedata.map(data => {
                                 return <option>{data}</option>
                             })}
@@ -115,6 +118,7 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="relationship_status">Relationship Status: </Label>
                         <Input type="select" name="relationship_status" value={relationship_status} onChange={this.handleChange} >
+                            <option></option>
                             <option>Married</option>
                             <option>Complicated</option>
                             <option>Single</option>
@@ -129,22 +133,25 @@ class InputDemographics extends React.Component {
                     <FormGroup>
                         <Label for="safe_status">Safe Status: </Label>
                         <Input type="select" name="safe_status" value={safe_status} onChange={this.handleChange} >
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>                            
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>                            
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="employed">Employed?</Label>
                         <Input type="select" name="employed" value={employed} onChange={this.handleChange}>
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="partner_employed">Partner Employed?</Label>
                         <Input type="select" name="partner_employed" value={partner_employed} onChange={this.handleChange}>
-                            <option value={true}>Yes</option>
-                            <option value={false}>No</option>
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
