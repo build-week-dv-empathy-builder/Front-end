@@ -21,7 +21,7 @@ class App extends React.Component {
       "password": password
     }
 
-    return axios.post('https://dv-empathy-builder.herokuapp.com/api/auth/login', payload)
+    return axios.post('https://empathy-builder-2.herokuapp.com/api/auth/login', payload)
       .then((res) => {
         localStorage.setItem('token', res.data.user.token)
         console.log(`log in successfull: `, res.data.message)
