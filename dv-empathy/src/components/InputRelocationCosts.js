@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { 
     Input, 
     Label, 
-    Form, 
+    Form,
     Button, 
     UncontrolledPopover, 
     PopoverHeader, 
@@ -308,7 +309,7 @@ class InputRelocationCosts extends React.Component {
                     </UncontrolledPopover>
 
                     <br />
-                    <Button type="submit">Submit</Button>
+                    <Link to="./results" onClick={this.saveData}>Continue to see results</Link>
                 </Form>
                 
             </div>

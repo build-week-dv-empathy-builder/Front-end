@@ -45,14 +45,11 @@ class App extends React.Component {
         <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
         <Route exact path="/calculator/budget" render={() => <InputPersonalBudget />} />
         <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
+        <Route exact path="/calculator/results" render={() => <Calculator />} />
         <Route exact path="/" render={() => <Home />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
         <Route path="/login" render={(props) => <Login {...props} login={this.login}/>} />
-        
-        {/* <Route path="/" render={() => 
-          <CalculatorPage data={ data }
-          /> }/> */}
   
       </div>
     );
