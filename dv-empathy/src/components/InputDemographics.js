@@ -10,9 +10,8 @@ class InputDemographics extends React.Component {
     constructor() {
         super()
         this.state = {
-            // current_location: 81401,
-            // timestamp: 20181026,
-            // desired_relocation: 87401,
+            current_location: localStorage.getItem('current_location'),
+            desired_relocation: localStorage.getItem('desired_relocation'),
             sex: localStorage.getItem('sex'),
             relationship_status: localStorage.getItem('relationship_status'),
             orientation: localStorage.getItem('orientation'),
@@ -41,7 +40,9 @@ class InputDemographics extends React.Component {
             safe_status,
             employed,
             partner_employed,
-            children } = this.state
+            current_location,
+            desired_relocation,
+            children, } = this.state
 
         localStorage.setItem('age', age)
         localStorage.setItem('sex', sex)
@@ -52,18 +53,23 @@ class InputDemographics extends React.Component {
         localStorage.setItem('employed', employed)
         localStorage.setItem('partner_employed', partner_employed)
         localStorage.setItem('children', children)
+        localStorage.setItem('current_location', current_location)
+        localStorage.setItem('desired_relocation', desired_relocation)       
     }
 
     render() {
-        const { age,
-                sex,
-                relationship_status,
-                orientation,
-                race,
-                safe_status,
-                employed,
-                partner_employed,
-                children } = this.state
+        const { 
+            age,
+            sex,
+            relationship_status,
+            orientation,
+            race,
+            safe_status,
+            employed,
+            partner_employed,
+            current_location,
+            desired_relocation,
+            children, } = this.state
 
         return (
             <div>
@@ -80,6 +86,14 @@ class InputDemographics extends React.Component {
                                 return <option>{data}</option>
                             })}
                         </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="current_location">Current Location (Zip/Postal Code)</Label>
+                        <Input type="number" name ="current_location" value={current_location} onChange={this.handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="desired_relocation">Desired Location (Zip/Postal Code)</Label>
+                        <Input type="number" name ="desired_relocation" value={desired_relocation} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="orientation">Orientation: </Label>
