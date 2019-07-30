@@ -13,14 +13,14 @@ class InputPersonalBudget extends React.Component {
     constructor() {
         super()
         this.state = {
-            individual_income: '',
-            personal_savings: '',
-            transportation: '',
-            food: '',
-            health_care: '',
-            car_loans: '',
-            personal_loans: '',
-            personal_other: '',  
+            individual_income: localStorage.getItem('individual_income'),
+            personal_savings: localStorage.getItem('personal_savings'),
+            transportation: localStorage.getItem('transportation'),
+            food: localStorage.getItem('food'),
+            health_care: localStorage.getItem('health_care'),
+            car_loans: localStorage.getItem('car_loans'),
+            personal_loans: localStorage.getItem('personal_loans'),
+            personal_other: localStorage.getItem('personal_other'),
         }
     }
 
@@ -28,6 +28,31 @@ class InputPersonalBudget extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
+    }
+
+    saveData = () => {
+        const { 
+            transportation,
+            food,
+            health_care,
+            car_loans,
+            personal_loans,
+            personal_other,
+            personal_budget_total,
+            personal_savings,
+            individual_income, 
+            
+        } = this.state
+
+        localStorage.setItem('transportation', transportation)
+        localStorage.setItem('food', food)
+        localStorage.setItem('health_care', health_care)
+        localStorage.setItem('car_loans', car_loans)
+        localStorage.setItem('personal_loans', personal_loans)
+        localStorage.setItem('personal_other', personal_other)
+        localStorage.setItem('personal_budget_total', personal_budget_total)
+        localStorage.setItem('personal_savings', personal_savings)
+        localStorage.setItem('individual_income', individual_income)       
     }
 
     render() {
@@ -139,7 +164,7 @@ class InputPersonalBudget extends React.Component {
                     <br />
                     
                 </Form>
-                <Link to="/calculator/relocation-costs">Continue to next section</Link>
+                <Link to="/calculator/relocation-costs" onClick={this.saveData}>Continue to next section</Link>
             </div>
         )
     }
