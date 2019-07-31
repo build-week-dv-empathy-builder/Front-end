@@ -57,9 +57,9 @@ class InputDemographics extends React.Component {
             children, } = this.state
 
         return (
-            <div>
+            <div className="demographics container">
                 <h1>INPUT DEMOGRAPHICS</h1>
-                <Form>
+                <Form className="demographics-form">
                     <FormGroup>
                         <Label for="age">Age: </Label>
                         <Input type="number" name="age" value={age} onChange={this.handleChange} />
@@ -144,7 +144,7 @@ class InputDemographics extends React.Component {
                         <Input type="number" name="children" value={children} onChange={this.handleChange} />
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/budget" onClick={this.saveData}>Continue to next section</Link>
+            <Link to="/calculator/personal-budget" onClick={this.saveData}>Continue to next section</Link>
             </div>
         )
     }

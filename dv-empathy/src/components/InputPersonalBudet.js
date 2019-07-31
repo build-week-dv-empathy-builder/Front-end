@@ -46,10 +46,10 @@ class InputPersonalBudget extends React.Component {
         const { individual_income, personal_savings, transportation, food, health_care, car_loans, personal_loans, personal_other } = this.state;
 
         return (
-            <div>
+            <div className="personal-budget container">
                 <h1>INPUT PERSONAL BUDGET</h1>
                 <br />
-                <Form>
+                <Form className="personal-budget-form">
                     <Label for="individual_income">Individual Income: </Label>
                     <Input 
                         id="IndividualIncome"
