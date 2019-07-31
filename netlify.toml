@@ -6,8 +6,8 @@
 #    that is where we will look for package.json/.nvmrc/etc not repo root!
 
 [build]
-  base    = "./Front-end"
-  publish = "./Front-end/dv-empathy/build"
+  base    = "./dv-empathy"
+  publish = "./dv-empathy/build"
   command = "npm build" 
 
 [[redirects]]
