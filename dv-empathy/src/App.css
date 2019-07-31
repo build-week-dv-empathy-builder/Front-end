@@ -49,6 +49,17 @@ table {
 /* End CSS RESET */
 
 /* START APP CSS */
+
+.App Input[type=number]::-webkit-inner-spin-button,
+.App Input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.App Input[type=number] {
+	-moz-appearance: textfield;
+}
+
 .App {
 	border: 1px solid black;
 	padding: 12px;
@@ -74,8 +85,17 @@ table {
 	padding: 6px;
 }
 
-.App .home {
-	
+.App .container {
+	padding: 6px;
 }
+
+.App .item {
+	padding: 6px 0;
+}
+
+
+
+
+/* END APP CSS */
 
 
