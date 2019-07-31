@@ -48,7 +48,7 @@ class Calculator extends React.Component {
     
     render() {
         return (
-            <div className="calculator">
+            <div className="calculator-container">
                 <h1>Results</h1>
                 <p>{`Personal budget total: $${this.personal_budget_total}`}</p>
                 <p>{`Relocation costs total: $${this.relocation_budget_total}`}</p>

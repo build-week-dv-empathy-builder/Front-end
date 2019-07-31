@@ -33,7 +33,7 @@ class Login extends React.Component {
     const { email, password } = this.state;
 
     return(
-      <div>
+      <div className="login-container">
         <Form inline onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label for="email"></Label>

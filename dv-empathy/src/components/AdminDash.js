@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap'
 
 class App extends React.Component {

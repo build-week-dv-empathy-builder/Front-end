@@ -144,7 +144,7 @@ class InputDemographics extends React.Component {
                         <Input type="number" name="children" value={children} onChange={this.handleChange} />
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/budget" onClick={this.saveData}>Continue to next section</Link>
+            <Link to="/calculator/personal-budget" onClick={this.saveData}>Continue to next section</Link>
             </div>
         )
     }

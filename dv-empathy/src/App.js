@@ -36,21 +36,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav>
+        <nav className="nav">
           <h1>Domestic Violence Empathy Builder</h1>
           <div className="nav-links">
             <p><Link exact to="/">Home</Link></p>
             <p><Link exact to="/login">Login</Link></p>
           </div>
         </nav>
-        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
-        <Route exact path="/calculator/budget" render={() => <InputPersonalBudget />} />
-        <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
-        <Route exact path="/calculator/results" render={() => <Calculator />} />
-        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts className="relocation-costs"/>} />
+        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget className="personal-budget"/>} />
+        <Route exact path="/calculator/demographics" render={() => <InputDemographics className="demographics" />} />
+        <Route exact path="/calculator/results" render={() => <Calculator className="calculator" />} />
+        <Route exact path="/" render={() => <Home className="home" />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
-        <Route path="/login" render={(props) => <Login {...props} login={this.login}/>} />
+        <Route path="/login" render={(props) => <Login className="login" {...props} login={this.login}/>} />
   
       </div>
     );
