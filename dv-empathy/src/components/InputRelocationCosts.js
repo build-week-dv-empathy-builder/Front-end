@@ -119,11 +119,11 @@ class InputRelocationCosts extends React.Component {
         const { travel_costs, rental_deposit, utility_connection, storage_unit, rent, car_rental, cell_phone, moving_truck, mental_health, income_loss, additional_security, relocation_other } = this.state
 
         return (
-            <div>
+            <div className="relocation-costs container">
                 <h1>INPUT RELOCATION COSTS</h1>
                 <br />
 
-                <Form onSubmit={ this.saveData }>
+                <Form className="relocation-costs-form" onSubmit={ this.saveData }>
 
                     <Label for="travel_costs">Travel Cost(s): </Label>
                     <Input 
