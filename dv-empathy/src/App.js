@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+// import dataProperties from 'dataProperties'
 import { Route, Link } from 'react-router-dom';
 
 import Login from './components/Login';
