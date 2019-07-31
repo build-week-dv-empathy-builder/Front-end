@@ -12,7 +12,7 @@ export default function(props) {
 			const token = localStorage.getItem('token')
 
 			return token
-				? <Component className="admin-dash" />
+				? <Component className="admin-dash container" />
 				: <Redirect to="/login" />
 		}} />
 	)

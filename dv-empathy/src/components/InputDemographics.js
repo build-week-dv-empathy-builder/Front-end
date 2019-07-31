@@ -57,9 +57,9 @@ class InputDemographics extends React.Component {
             children, } = this.state
 
         return (
-            <div>
+            <div className="demographics container">
                 <h1>INPUT DEMOGRAPHICS</h1>
-                <Form>
+                <Form className="demographics-form">
                     <FormGroup>
                         <Label for="age">Age: </Label>
                         <Input type="number" name="age" value={age} onChange={this.handleChange} />

@@ -43,10 +43,10 @@ class App extends React.Component {
             <p><Link exact to="/login">Login</Link></p>
           </div>
         </nav>
-        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts className="relocation-costs"/>} />
-        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget className="personal-budget"/>} />
-        <Route exact path="/calculator/demographics" render={() => <InputDemographics className="demographics" />} />
-        <Route exact path="/calculator/results" render={() => <Calculator className="calculator" />} />
+        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
+        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
+        <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
+        <Route exact path="/calculator/results" render={() => <Calculator />} />
         <Route exact path="/" render={() => <Home className="home" />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
