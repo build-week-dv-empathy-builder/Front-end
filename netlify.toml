@@ -7,7 +7,7 @@
 
 [build]
   base    = "./Front-end"
-  publish = "./Front-end/build"
+  publish = "./Front-end/dv-empathy/build"
   command = "yarn build" 
 
 [[redirects]]
