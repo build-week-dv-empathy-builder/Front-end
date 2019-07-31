@@ -8,7 +8,7 @@
 [build]
   base    = "./Front-end"
   publish = "./Front-end/dv-empathy/build"
-  command = "yarn build" 
+  command = "npm build" 
 
 [[redirects]]
   from = "/*"
