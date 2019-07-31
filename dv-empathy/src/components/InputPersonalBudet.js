@@ -140,7 +140,7 @@ class InputPersonalBudget extends React.Component {
 
                     <br />
 
-                    <Label for="personal_other">Other Personal Income: </Label>
+                    <Label for="personal_other">Other Personal Expenses: </Label>
                     <Input
                         type="number"
                         name="personal_other" 

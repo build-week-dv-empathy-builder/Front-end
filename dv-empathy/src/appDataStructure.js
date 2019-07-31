@@ -49,6 +49,6 @@ export default
         income_loss: '',
         additional_security: '',
         relocation_other: '',
-        relocation_budget_total: '',
+        
     }
 }
