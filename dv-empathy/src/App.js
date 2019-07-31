@@ -39,8 +39,8 @@ class App extends React.Component {
         <nav className="nav">
           <h1>Domestic Violence Empathy Builder</h1>
           <div className="nav-links">
-            <p><Link exact to="/">Home</Link></p>
-            <p><Link exact to="/login">Login</Link></p>
+            <Link exact to="/">Home</Link>
+            <Link exact to="/login">Login</Link>
           </div>
         </nav>
         <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
