@@ -9,8 +9,3 @@
   base    = "./dv-empathy"
   publish = "./dv-empathy/build"
   command = "npm build" 
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
