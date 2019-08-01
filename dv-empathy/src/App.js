@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+// import dataProperties from 'dataProperties'
 import { Route, Link } from 'react-router-dom';
 
 import Login from './components/Login';
@@ -9,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Calculator from './components/Calculator'
 import InputPersonalBudget from './components/InputPersonalBudet';
 import InputRelocationCosts from './components/InputRelocationCosts';
+import InputDemographics from './components/InputDemographics';
 
 import './App.css';
 
@@ -21,7 +23,7 @@ class App extends React.Component {
       "password": password
     }
 
-    return axios.post('https://dv-empathy-builder.herokuapp.com/api/auth/login', payload)
+    return axios.post('https://empathy-builder-2.herokuapp.com/api/auth/login', payload)
       .then((res) => {
         localStorage.setItem('token', res.data.user.token)
         console.log(`log in successfull: `, res.data.message)
@@ -34,24 +36,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav>
+        <nav className="nav">
           <h1>Domestic Violence Empathy Builder</h1>
           <div className="nav-links">
-            <p><Link exact to="/">Home</Link></p>
-            <p><Link exact to="/login">Login</Link></p>
+            <Link exact to="/">Home</Link>
+            <Link exact to="/login">Login</Link>
           </div>
         </nav>
         <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
-        <Route exact path="/calculator/budget" render={() => <InputPersonalBudget />} />
-        <Route exact path="/calculator" render={() => <Calculator />} />
-        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
+        <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
+        <Route exact path="/calculator/results" render={() => <Calculator />} />
+        <Route exact path="/" render={() => <Home className="home" />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
-        <Route path="/login" render={(props) => <Login {...props} login={this.login}/>} />
-        
-        {/* <Route path="/" render={() => 
-          <CalculatorPage data={ data }
-          /> }/> */}
+        <Route path="/login" render={(props) => <Login className="login" {...props} login={this.login}/>} />
   
       </div>
     );
