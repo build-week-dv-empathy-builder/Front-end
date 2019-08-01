@@ -65,8 +65,9 @@ table {
 .App {
 	border: 1px solid black;
 	padding: 12px;
-	width: 60%;
-	
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
 	font-family: 'Lato', sans-serif;
 
 }
@@ -102,6 +103,8 @@ table {
 .App .container {
 	width: 75%;
 	padding: 6px;
+	padding: 0 auto;
+	border: 1px solid blue;
 }
 
 .App .item {
