@@ -57,11 +57,8 @@ class App extends React.Component {
         return (
         <>
             <Button onClick={this.logout}>Logout</Button>
-            <Button onClick={this.getData}>Get Data</Button>
             <h1>ADMIN DASHBOARD</h1>
-            <div id="download-link">
-
-            </div>
+            <Button onClick={this.getData}>Get Data</Button>
             {/* {this.state.dataReceived ? <Link to="text/json;charset=utf-8," + {this.state.data}>} */}
     
         </>
