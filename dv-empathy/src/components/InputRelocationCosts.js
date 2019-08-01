@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { 
     Input, 
     Label, 
-    Form,
-    Button, 
+    Form, 
     UncontrolledPopover, 
     PopoverHeader, 
     PopoverBody 
@@ -93,7 +92,7 @@ class InputRelocationCosts extends React.Component {
         }
 
         event.preventDefault()
-        axios.post('https://dv-empathy-builder.herokuapp.com/api/insert', payload, { headers })
+        axios.post('https://empathy-builder-2.herokuapp.com/api/auth/insert', payload, { headers })
             .then((res) => {
                 console.log("response", res)
                 console.log("data sent", res.data.message)
