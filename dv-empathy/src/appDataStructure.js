@@ -3,6 +3,7 @@ export default
 {
     personal_savings: '',
     individual_income: '',
+    timestamp: '',
 
     //calculated results
     calculated_difference: '',
@@ -10,7 +11,6 @@ export default
     
     demographics: {
         current_location: '',
-        timestamp: '',
         desired_relocation: '',
         sex: '',
         relationship_status: '',

@@ -1,5 +1,8 @@
 import React from 'react'
-import appDataStructure from '../appDataStructure'
+import axios from 'axios'
+import { Button } from 'reactstrap'
+import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
+import dataProperties from '../dataProperties'  // these are the object properties the SERVER sends and recieves
 
 class Calculator extends React.Component {
     constructor() {
@@ -16,8 +19,8 @@ class Calculator extends React.Component {
     calculatePersonalCosts = () => {
         const p_costs = {...appDataStructure.personal_costs}
         for(let property in p_costs){
-            if(p_costs.hasOwnProperty(property)) {
-                p_costs[property] = parseFloat(localStorage.getItem(`${property}`))
+            if(p_costs.hasOwnProperty(property)) {  // checks if the current property is it's own property, 
+                p_costs[property] = parseFloat(localStorage.getItem(`${property}`)) // then store it and add it
                 this.personal_budget_total += p_costs[property] 
             }
         }
@@ -37,13 +40,64 @@ class Calculator extends React.Component {
     calculateTotalCost = () => {
         const all_costs = this.personal_budget_total + this.relocation_budget_total
         this.calculated_difference = all_costs - (this.personal_savings + this.individual_income)
-        console.log('wtf', this.calculated_difference)
     }
     
     componentWillMount() {
         this.calculatePersonalCosts()
         this.calculateRelocationCosts()
         this.calculateTotalCost()
+
+        this.buildPayload()
+    }
+
+    buildPayload = () => {
+        const toBeJSON_obj = {}
+        
+        // build the personal budget costs properties
+        const personal_budget_properties = {...appDataStructure.personal_costs}
+        for(let property in personal_budget_properties) {
+            if(personal_budget_properties.hasOwnProperty(property)) {
+                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+            }
+        }
+
+        // build the relocation budget costs properties
+        const relocation_properties = {...appDataStructure.relocation_costs}
+        for(let property in relocation_properties) {
+            if(relocation_properties.hasOwnProperty(property)) {
+                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+            }
+        }
+
+        // build the demographics properties
+        const demographics_properties = {...appDataStructure.demographics}
+        for(let property in demographics_properties) {
+            if(demographics_properties.hasOwnProperty(property)) {
+                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+            }
+        }
+
+        toBeJSON_obj.personal_savings = this.personal_savings
+        toBeJSON_obj.individual_income = this.individual_income
+        toBeJSON_obj.personal_budget_total = this.personal_budget_total
+        toBeJSON_obj.relocation_budget_total = this.relocation_budget_total
+
+        const jsonObj = JSON.stringify(toBeJSON_obj) // convert the object to JSON
+        return jsonObj
+    }
+
+    sendDataToServer = () => {
+        const payload = this.buildPayload()
+
+        // TODO FIX THIS
+        axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload)
+            .then((res) => {
+                console.log("data sent", res)
+            })
+            .catch((err) => {
+                console.log("error sending data", err)
+                console.log("failed payload", payload)
+            })
     }
     
     render() {
@@ -55,11 +109,10 @@ class Calculator extends React.Component {
                 <p>{`Individual Income: $${this.individual_income}`}</p>
                 <p>{`Personal Savings: $${this.personal_savings}`}</p>
                 <p>{`Difference: $${this.calculated_difference}`}</p>
+                <Button onClick={this.sendDataToServer}>Send Data</Button>
             </div>
         )
-    }
-    
-    
+    } 
 }
 
 export default Calculator
