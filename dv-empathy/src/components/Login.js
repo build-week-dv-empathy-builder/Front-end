@@ -25,7 +25,7 @@ class Login extends React.Component {
         this.props.history.push('/admin')
       })
       .catch((err) => {
-        console.log("error showing admin page", err)
+        console.log("ERROR: Unable to load admin dashboard", err)
       })
   }
 

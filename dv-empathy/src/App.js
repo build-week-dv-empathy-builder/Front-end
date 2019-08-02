@@ -17,7 +17,6 @@ import './App.css';
 class App extends React.Component {
 
   login = (email, password) => {
-    console.log(`LOGGING IN: ${email}, ${password}`)
     const payload = {
       "email": email,
       "password": password
@@ -26,10 +25,9 @@ class App extends React.Component {
     return axios.post('https://empathy-builder-2.herokuapp.com/api/auth/login', payload)
       .then((res) => {
         localStorage.setItem('token', res.data.user.token)
-        console.log(`log in successfull: `, res.data.message)
       })
       .catch((err) => {
-        console.log(`ERROR LOGGING IN`, err)
+        console.log(`Error occurred when logging`, err)
       })
   }
 
