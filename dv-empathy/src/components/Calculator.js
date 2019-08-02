@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Button } from 'reactstrap'
+import { Button, ListGroup, ListGroupItem } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
 
 
@@ -121,12 +121,24 @@ class Calculator extends React.Component {
         return (
             <div className="calculator container">
                 <h1>Results</h1>
-                <p>{`Personal budget total: $${this.personal_budget_total}`}</p>
-                <p>{`Relocation costs total: $${this.relocation_budget_total}`}</p>
-                <p>{`Individual Income: $${this.individual_income}`}</p>
-                <p>{`Personal Savings: $${this.personal_savings}`}</p>
-                <p>{`Difference: $${this.calculated_difference}`}</p>
-                <Button onClick={this.sendDataToServer}>Send Data</Button>
+                <ListGroup>
+                    <ListGroupItem className="justify-content-between">
+                        <p>{`Personal budget total: $${this.personal_budget_total}`}</p>
+                    </ListGroupItem>
+                    <ListGroupItem className="justify-content-between">
+                        <p>{`Relocation costs total: $${this.relocation_budget_total}`}</p>
+                    </ListGroupItem>
+                    <ListGroupItem className="justify-content-between">
+                        <p>{`Individual Income: $${this.individual_income}`}</p>
+                    </ListGroupItem>
+                    <ListGroupItem className="justify-content-between">
+                        <p>{`Personal Savings: $${this.personal_savings}`}</p>
+                    </ListGroupItem>
+                    <ListGroupItem className="justify-content-between">
+                        <p>{`Difference: $${this.calculated_difference}`}</p>
+                    </ListGroupItem>
+                </ListGroup>
+                    <Button onClick={this.sendDataToServer}>Send Data</Button>
             </div>
         )
     } 

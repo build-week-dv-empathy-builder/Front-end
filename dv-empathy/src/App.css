@@ -63,7 +63,7 @@ table {
 }
 
 .App {
-	border: 1px solid black;
+	box-shadow: 0 3px 3px #53C3C5, 0 3px 3px #53C3C5;
 	padding: 12px;
 	width: 90%;
 	max-width: 900px;
@@ -89,7 +89,8 @@ table {
 }
 
 .App .nav h1 {
-	padding: 6px
+	padding: 6px;
+	color: #53C3C5;
 }
 
 .App .nav .nav-links {
@@ -102,9 +103,9 @@ table {
 
 .App .container {
 	width: 75%;
-	padding: 6px;
+	padding: 25px;
 	padding: 0 auto;
-	border: 1px solid blue;
+	box-shadow: 0 3px 6px #262D35, 0 3px 6px #262D35;
 }
 
 .App .item {
@@ -119,8 +120,19 @@ table {
 	margin-top: 3px;
 }
 
+a {
+	color: #EB6548;
+	padding: 15px;
+}
 
+a:hover {
+	color: #262D35;
+	border-radius: 35px;
+}
 
+.popover {
+	background: #53C3C5;
+}
 
 /* END APP CSS */
 
