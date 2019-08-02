@@ -1,3 +1,9 @@
+[build]
+  base    = "./dv-empathy"
+  publish = "./dv-empathy/build"
+  command = "npm run build" 
+
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
