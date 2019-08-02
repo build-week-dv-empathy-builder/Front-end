@@ -15,18 +15,18 @@ class InputRelocationCosts extends React.Component {
     constructor() {
         super()
         this.state = {
-            travel_costs: localStorage.getItem('travel_costs'),
-            rental_deposit: localStorage.getItem('rental_deposit'),
-            utility_connection: localStorage.getItem('utility_connection'),
-            storage_unit: localStorage.getItem('storage_unit'),
-            rent: localStorage.getItem('rent'),
-            car_rental: localStorage.getItem('car_rental'),
-            cell_phone: localStorage.getItem('cell_phone'),
-            moving_truck: localStorage.getItem('moving_truck'),
-            mental_health: localStorage.getItem('mental_health'),
-            income_loss: localStorage.getItem('income_loss'),
-            additional_security: localStorage.getItem('additional_security'),
-            relocation_other: localStorage.getItem('relocation_other'),
+            travel_costs: sessionStorage.getItem('travel_costs'),
+            rental_deposit: sessionStorage.getItem('rental_deposit'),
+            utility_connection: sessionStorage.getItem('utility_connection'),
+            storage_unit: sessionStorage.getItem('storage_unit'),
+            rent: sessionStorage.getItem('rent'),
+            car_rental: sessionStorage.getItem('car_rental'),
+            cell_phone: sessionStorage.getItem('cell_phone'),
+            moving_truck: sessionStorage.getItem('moving_truck'),
+            mental_health: sessionStorage.getItem('mental_health'),
+            income_loss: sessionStorage.getItem('income_loss'),
+            additional_security: sessionStorage.getItem('additional_security'),
+            relocation_other: sessionStorage.getItem('relocation_other'),
         }
     }
 
@@ -43,11 +43,11 @@ class InputRelocationCosts extends React.Component {
     saveData = () => {        
         // Loop through each property in the clone of state (data)
         // Check if the property is this specficic class or a prototype property
-        // If the current property is its own property, store it in localStorage
+        // If the current property is its own property, store it in sessionStorage
         const data = {...this.state}
         for(let property in data) {
             if(data.hasOwnProperty(property)) {
-                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+                sessionStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
             }
         }
     }

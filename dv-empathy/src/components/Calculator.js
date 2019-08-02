@@ -8,8 +8,8 @@ class Calculator extends React.Component {
     constructor() {
         super()
         
-        this.personal_savings = parseFloat(localStorage.getItem('personal_savings'))
-        this.individual_income = parseFloat(localStorage.getItem('individual_income'))
+        this.personal_savings = parseFloat(sessionStorage.getItem('personal_savings'))
+        this.individual_income = parseFloat(sessionStorage.getItem('individual_income'))
         this.personal_budget_total = 0
         this.relocation_budget_total = 0
         this.calculated_difference = 0
@@ -20,7 +20,7 @@ class Calculator extends React.Component {
         const p_costs = {...appDataStructure.personal_costs}
         for(let property in p_costs){
             if(p_costs.hasOwnProperty(property)) {  // checks if the current property is it's own property, 
-                p_costs[property] = parseFloat(localStorage.getItem(`${property}`)) // then store it and add it
+                p_costs[property] = parseFloat(sessionStorage.getItem(`${property}`)) // then store it and add it
                 this.personal_budget_total += p_costs[property] 
             }
         }
@@ -31,7 +31,7 @@ class Calculator extends React.Component {
         const r_costs = {...appDataStructure.relocation_costs}
         for (let property in r_costs) {
             if(r_costs.hasOwnProperty(property)) {
-                r_costs[property] = parseFloat(localStorage.getItem(`${property}`))
+                r_costs[property] = parseFloat(sessionStorage.getItem(`${property}`))
                 this.relocation_budget_total += r_costs[property]
             }
         }
@@ -64,7 +64,7 @@ class Calculator extends React.Component {
         const personal_budget_properties = {...appDataStructure.personal_costs}
         for(let property in personal_budget_properties) {
             if(personal_budget_properties.hasOwnProperty(property)) {
-                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+                toBeJSON_obj[property] = sessionStorage.getItem(`${property}`)
             }
         }
 
@@ -72,7 +72,7 @@ class Calculator extends React.Component {
         const relocation_properties = {...appDataStructure.relocation_costs}
         for(let property in relocation_properties) {
             if(relocation_properties.hasOwnProperty(property)) {
-                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+                toBeJSON_obj[property] = sessionStorage.getItem(`${property}`)
             }
         }
 
@@ -80,7 +80,7 @@ class Calculator extends React.Component {
         const demographics_properties = {...appDataStructure.demographics}
         for(let property in demographics_properties) {
             if(demographics_properties.hasOwnProperty(property)) {
-                toBeJSON_obj[property] = localStorage.getItem(`${property}`)
+                toBeJSON_obj[property] = sessionStorage.getItem(`${property}`)
             }
         }
 
@@ -106,7 +106,7 @@ class Calculator extends React.Component {
 
         axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload, { headers })
             .then((res) => {
-                localStorage.clear()
+                sessionStorage.clear()
                 console.log("data sent")
             })
             .catch((err) => {

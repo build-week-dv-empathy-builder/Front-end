@@ -10,17 +10,17 @@ class InputDemographics extends React.Component {
     constructor() {
         super()
         this.state = {
-            current_location: localStorage.getItem('current_location'),
-            desired_relocation: localStorage.getItem('desired_relocation'),
-            sex: localStorage.getItem('sex'),
-            relationship_status: localStorage.getItem('relationship_status'),
-            orientation: localStorage.getItem('orientation'),
-            age: localStorage.getItem('age'),
-            race: localStorage.getItem('race'),
-            safe_status: localStorage.getItem('safe_status'),
-            employed: localStorage.getItem('employed'),
-            partner_employed: localStorage.getItem('partner_employed'),
-            children: localStorage.getItem('children'),
+            current_location: sessionStorage.getItem('current_location'),
+            desired_relocation: sessionStorage.getItem('desired_relocation'),
+            sex: sessionStorage.getItem('sex'),
+            relationship_status: sessionStorage.getItem('relationship_status'),
+            orientation: sessionStorage.getItem('orientation'),
+            age: sessionStorage.getItem('age'),
+            race: sessionStorage.getItem('race'),
+            safe_status: sessionStorage.getItem('safe_status'),
+            employed: sessionStorage.getItem('employed'),
+            partner_employed: sessionStorage.getItem('partner_employed'),
+            children: sessionStorage.getItem('children'),
         }
     }
 
@@ -37,7 +37,7 @@ class InputDemographics extends React.Component {
         const data = {...this.state}
         for(let property in data) {
             if(data.hasOwnProperty(property)) {
-                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+                sessionStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
             }
         }
     }
