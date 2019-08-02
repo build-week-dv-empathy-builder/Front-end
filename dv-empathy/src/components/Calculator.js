@@ -142,7 +142,7 @@ class Calculator extends React.Component {
                 </Table>
 
                 <Button onClick={this.sendDataToServer}>Send Data</Button>
-
+                <p>Thank You!</p>
             </div>
         )
     } 
