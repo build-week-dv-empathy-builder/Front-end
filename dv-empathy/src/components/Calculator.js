@@ -116,27 +116,27 @@ class Calculator extends React.Component {
                         <tr>
                             <th scope='row'>1</th>
                             <td>Personal budget total:</td>
-                            <td> $$ {this.personal_budget_total} </td>
+                            <td> $ {this.personal_budget_total} </td>
                         </tr>
                         <tr>
                             <th scope='row'>2</th>
                             <td>Relocation costs total:</td>
-                            <td> $${this.relocation_budget_total} </td>
+                            <td> ${this.relocation_budget_total} </td>
                         </tr>
                         <tr>
                             <th scope='row'>3</th>
                             <td>Individual Income:</td>
-                            <td> $${this.individual_income}</td>
+                            <td> ${this.individual_income}</td>
                         </tr>
                         <tr>
                             <th scope='row'>4</th>
                             <td>Personal Savings:</td>
-                            <td> $${this.personal_savings}</td>
+                            <td> ${this.personal_savings}</td>
                         </tr>
                         <tr>
                             <th scope='row'>5</th>
                             <td>Difference:</td>
-                            <td> $${this.calculated_difference}</td>
+                            <td> ${this.calculated_difference}</td>
                         </tr>  
                     </tbody>
                 </Table>
