@@ -6,7 +6,8 @@ import {
     Form, 
     UncontrolledPopover, 
     PopoverHeader, 
-    PopoverBody 
+    PopoverBody,
+    Button
 } from 'reactstrap'
 import axios from 'axios'
 
@@ -36,72 +37,9 @@ class InputRelocationCosts extends React.Component {
     }
 
     handleSubmit = (event) => {
-        
-
-
-        /*** TODO *** 
-         * THIS WILL BE MOVED TO THE COMPONENT THAT CALCULATES AND SENDS THE DATA  */
-        const headers = {
-            authorization: localStorage.getItem('token')    
-        }
-        const payload = {
-            //has vehicle in general?
-            //general data
-            "current_location": "81401",
-            "timestamp": "20181026",
-            "desired_relocation": "87401",
-            "sex": "male",
-            "relationship_status": "married",
-            "orientation": "straight",
-            "age": "28",
-            "race": "white",
-            "safe_status": "yes",
-            "employed": "no",
-            "partner_employed": "yes",
-            "children": "yes",
-            "personal_savings": "1000",
-            "individual_income": "500",
-        
-            //child care
-            //personal budget
-            "transportation": "50",
-            "food": "200",
-            "health_care": "0",
-            "car_loans": "0",
-            "personal_loans": "0",
-            "personal_other": "200",
-            "personal_budget_total": "450",
-        
-            //relocation budget
-            "travel_costs": "50",
-            "rental_deposit": "500",
-            "utility_connection": "100",
-            "storage_unit": "50",
-            "rent": "600",
-            "car_rental": "0",
-            "cell_phone": "100",
-            "moving_truck": "300",
-            "mental_health": "0",
-            "income_loss": "0",
-            "additional_security": "100",
-            "relocation_other": "200",
-            "relocation_budget_total": "2000",
-        
-            //calculated results
-            "calculated_difference": "1450", 
-        }
-
         event.preventDefault()
-        axios.post('https://empathy-builder-2.herokuapp.com/api/auth/insert', payload, { headers })
-            .then((res) => {
-                console.log("response", res)
-                console.log("data sent", res.data.message)
-            })
-            .catch((err) => {
-                console.log("error sending data", err)
-            })
+        
     }
-
     saveData = () => {        
         // Loop through each property in the clone of state (data)
         // Check if the property is this specficic class or a prototype property
@@ -308,7 +246,7 @@ class InputRelocationCosts extends React.Component {
                     </UncontrolledPopover>
 
                     <br />
-                    <Link to="./results" onClick={this.saveData}>Continue to see results</Link>
+                    <Link to="./results" onClick={this.saveData}><Button id="app-nav-button">Get Results</Button></Link>
                 </Form>
                 
             </div>

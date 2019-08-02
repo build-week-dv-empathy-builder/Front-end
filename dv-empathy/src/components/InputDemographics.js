@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Label, Form, FormGroup } from 'reactstrap'
+import { Input, Label, Form, FormGroup, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import racedata from '../racedata'
@@ -148,7 +148,7 @@ class InputDemographics extends React.Component {
                         </Input>
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/personal-budget" onClick={this.saveData}>Continue to next section</Link>
+            <Link to="/calculator/personal-budget" onClick={this.saveData}><Button id="app-nav-button">Next Section</Button></Link>
             </div>
         )
     }

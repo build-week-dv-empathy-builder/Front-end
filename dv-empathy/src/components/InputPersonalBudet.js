@@ -5,7 +5,8 @@ import {
     Form, 
     UncontrolledPopover, 
     PopoverHeader, 
-    PopoverBody 
+    PopoverBody,
+    Button,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
@@ -151,7 +152,7 @@ class InputPersonalBudget extends React.Component {
                     <br />
                     
                 </Form>
-                <Link to="/calculator/relocation-costs" onClick={this.saveData}>Continue to next section</Link>
+                <Link to="/calculator/relocation-costs" onClick={this.saveData}><Button id="app-nav-button">Next Section</Button></Link>
             </div>
         )
     }
