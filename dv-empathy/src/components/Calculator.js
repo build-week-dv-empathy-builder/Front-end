@@ -1,15 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import { Button, ListGroup, ListGroupItem } from 'reactstrap'
+import { Button, ListGroup, ListGroupItem, Table } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
-
+import dataProperties from '../dataProperties'  // these are the object properties the SERVER sends and recieves
 
 class Calculator extends React.Component {
     constructor() {
         super()
         
-        this.personal_savings = parseFloat(localStorage.getItem('personal_savings'))
-        this.individual_income = parseFloat(localStorage.getItem('individual_income'))
+        this.personal_savings = localStorage.getItem('personal_savings')
+        this.individual_income = localStorage.getItem('individual_income')
         this.personal_budget_total = 0
         this.relocation_budget_total = 0
         this.calculated_difference = 0
@@ -38,11 +38,8 @@ class Calculator extends React.Component {
     }
 
     calculateTotalCost = () => {
-
-        const all_costs = parseFloat(this.personal_budget_total + this.relocation_budget_total) 
-        const sumOfSavingsAndIncome = this.personal_savings + this.individual_income
-        this.calculated_difference = parseFloat(sumOfSavingsAndIncome - all_costs)
-
+        const all_costs = this.personal_budget_total + this.relocation_budget_total
+        this.calculated_difference = all_costs - (this.personal_savings + this.individual_income)
     }
     
     componentWillMount() {
@@ -52,12 +49,6 @@ class Calculator extends React.Component {
 
         this.buildPayload()
     }
-
-
-    componentDidMount() {
-        this.sendDataToServer()
-    }
-
 
     buildPayload = () => {
         const toBeJSON_obj = {}
@@ -91,10 +82,6 @@ class Calculator extends React.Component {
         toBeJSON_obj.personal_budget_total = this.personal_budget_total
         toBeJSON_obj.relocation_budget_total = this.relocation_budget_total
 
-        toBeJSON_obj.timestamp = Date.now()
-        toBeJSON_obj.calculated_difference = this.calculated_difference
-        console.log("before JSON", toBeJSON_obj)
-
         const jsonObj = JSON.stringify(toBeJSON_obj) // convert the object to JSON
         return jsonObj
     }
@@ -102,18 +89,14 @@ class Calculator extends React.Component {
     sendDataToServer = () => {
         const payload = this.buildPayload()
 
-        const headers = {
-            'content-type': 'application/json'   
-        }
-
-        axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload, { headers })
+        // TODO FIX THIS
+        axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload)
             .then((res) => {
-                localStorage.clear()
-                console.log("data sent")
+                console.log("data sent", res)
             })
             .catch((err) => {
                 console.log("error sending data", err)
-
+                console.log("failed payload", payload)
             })
     }
     
@@ -121,24 +104,45 @@ class Calculator extends React.Component {
         return (
             <div className="calculator container">
                 <h1>Results</h1>
-                <ListGroup>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Personal budget total: $${this.personal_budget_total}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Relocation costs total: $${this.relocation_budget_total}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Individual Income: $${this.individual_income}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Personal Savings: $${this.personal_savings}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Difference: $${this.calculated_difference}`}</p>
-                    </ListGroupItem>
-                </ListGroup>
-                    <Button onClick={this.sendDataToServer}>Send Data</Button>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope='row'>1</th>
+                            <td>Personal budget total:</td>
+                            <td> $$ {this.personal_budget_total} </td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>2</th>
+                            <td>Relocation costs total:</td>
+                            <td> $${this.relocation_budget_total} </td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>3</th>
+                            <td>Individual Income:</td>
+                            <td> $${this.individual_income}</td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>4</th>
+                            <td>Personal Savings:</td>
+                            <td> $${this.personal_savings}</td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>5</th>
+                            <td>Difference:</td>
+                            <td> $${this.calculated_difference}</td>
+                        </tr>  
+                    </tbody>
+                </Table>
+
+                <Button onClick={this.sendDataToServer}>Send Data</Button>
+
             </div>
         )
     } 
