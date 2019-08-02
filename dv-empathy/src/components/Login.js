@@ -34,14 +34,15 @@ class Login extends React.Component {
 
     return(
       <div className="login container">
-        <Form inline onSubmit={this.handleSubmit}>
+        <h2>Admin Dashboard Login</h2>
+        <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="email"></Label>
+            <Label for="email">Email</Label>
             <Input onChange={this.handleChange} name="email" value={ email } />
           </FormGroup>
           <FormGroup>
-            <Label for="password"></Label>
-            <Input onChange={this.handleChange} name="password" value={ password } />   
+            <Label for="password">Password</Label>
+            <Input type="password" onChange={this.handleChange} name="password" value={ password } />   
           </FormGroup>
           <Button type="submit">Login</Button>    
         </Form>
