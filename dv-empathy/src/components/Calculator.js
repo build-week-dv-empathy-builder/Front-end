@@ -2,14 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { Button } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
-import dataProperties from '../dataProperties'  // these are the object properties the SERVER sends and recieves
+
 
 class Calculator extends React.Component {
     constructor() {
         super()
         
-        this.personal_savings = localStorage.getItem('personal_savings')
-        this.individual_income = localStorage.getItem('individual_income')
+        this.personal_savings = parseFloat(localStorage.getItem('personal_savings'))
+        this.individual_income = parseFloat(localStorage.getItem('individual_income'))
         this.personal_budget_total = 0
         this.relocation_budget_total = 0
         this.calculated_difference = 0
@@ -38,8 +38,11 @@ class Calculator extends React.Component {
     }
 
     calculateTotalCost = () => {
-        const all_costs = this.personal_budget_total + this.relocation_budget_total
-        this.calculated_difference = all_costs - (this.personal_savings + this.individual_income)
+
+        const all_costs = parseFloat(this.personal_budget_total + this.relocation_budget_total) 
+        const sumOfSavingsAndIncome = this.personal_savings + this.individual_income
+        this.calculated_difference = parseFloat(sumOfSavingsAndIncome - all_costs)
+
     }
     
     componentWillMount() {
@@ -49,6 +52,12 @@ class Calculator extends React.Component {
 
         this.buildPayload()
     }
+
+
+    componentDidMount() {
+        this.sendDataToServer()
+    }
+
 
     buildPayload = () => {
         const toBeJSON_obj = {}
@@ -82,6 +91,10 @@ class Calculator extends React.Component {
         toBeJSON_obj.personal_budget_total = this.personal_budget_total
         toBeJSON_obj.relocation_budget_total = this.relocation_budget_total
 
+        toBeJSON_obj.timestamp = Date.now()
+        toBeJSON_obj.calculated_difference = this.calculated_difference
+        console.log("before JSON", toBeJSON_obj)
+
         const jsonObj = JSON.stringify(toBeJSON_obj) // convert the object to JSON
         return jsonObj
     }
@@ -89,14 +102,18 @@ class Calculator extends React.Component {
     sendDataToServer = () => {
         const payload = this.buildPayload()
 
-        // TODO FIX THIS
-        axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload)
+        const headers = {
+            'content-type': 'application/json'   
+        }
+
+        axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload, { headers })
             .then((res) => {
-                console.log("data sent", res)
+                localStorage.clear()
+                console.log("data sent")
             })
             .catch((err) => {
                 console.log("error sending data", err)
-                console.log("failed payload", payload)
+
             })
     }
     
