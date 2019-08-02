@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Button, ListGroup, ListGroupItem, Table } from 'reactstrap'
+import { Button, Table } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
 import dataProperties from '../dataProperties'  // these are the object properties the SERVER sends and recieves
 
