@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Button } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
 
+
 class Calculator extends React.Component {
     constructor() {
         super()
@@ -37,9 +38,11 @@ class Calculator extends React.Component {
     }
 
     calculateTotalCost = () => {
+
         const all_costs = parseFloat(this.personal_budget_total + this.relocation_budget_total) 
         const sumOfSavingsAndIncome = this.personal_savings + this.individual_income
         this.calculated_difference = parseFloat(sumOfSavingsAndIncome - all_costs)
+
     }
     
     componentWillMount() {
@@ -50,9 +53,11 @@ class Calculator extends React.Component {
         this.buildPayload()
     }
 
+
     componentDidMount() {
         this.sendDataToServer()
     }
+
 
     buildPayload = () => {
         const toBeJSON_obj = {}
@@ -85,15 +90,18 @@ class Calculator extends React.Component {
         toBeJSON_obj.individual_income = this.individual_income
         toBeJSON_obj.personal_budget_total = this.personal_budget_total
         toBeJSON_obj.relocation_budget_total = this.relocation_budget_total
+
         toBeJSON_obj.timestamp = Date.now()
         toBeJSON_obj.calculated_difference = this.calculated_difference
         console.log("before JSON", toBeJSON_obj)
+
         const jsonObj = JSON.stringify(toBeJSON_obj) // convert the object to JSON
         return jsonObj
     }
 
     sendDataToServer = () => {
         const payload = this.buildPayload()
+
         const headers = {
             'content-type': 'application/json'   
         }
@@ -105,6 +113,7 @@ class Calculator extends React.Component {
             })
             .catch((err) => {
                 console.log("error sending data", err)
+
             })
     }
     
