@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Button, ListGroup, ListGroupItem } from 'reactstrap'
+import { Button, Table } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
 
 
@@ -121,23 +121,47 @@ class Calculator extends React.Component {
         return (
             <div className="calculator container">
                 <h1>Results</h1>
-                <ListGroup>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Personal budget total: $${this.personal_budget_total}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Relocation costs total: $${this.relocation_budget_total}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Individual Income: $${this.individual_income}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Personal Savings: $${this.personal_savings}`}</p>
-                    </ListGroupItem>
-                    <ListGroupItem className="justify-content-between">
-                        <p>{`Difference: $${this.calculated_difference}`}</p>
-                    </ListGroupItem>
-                </ListGroup>
+                <div className="calculator container">
+                <h1>Results</h1>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope='row'>1</th>
+                            <td>Personal budget total:</td>
+                            <td> $ {this.personal_budget_total} </td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>2</th>
+                            <td>Relocation costs total:</td>
+                            <td> ${this.relocation_budget_total} </td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>3</th>
+                            <td>Individual Income:</td>
+                            <td> ${this.individual_income}</td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>4</th>
+                            <td>Personal Savings:</td>
+                            <td> ${this.personal_savings}</td>
+                        </tr>
+                        <tr>
+                            <th scope='row'>5</th>
+                            <td>Difference:</td>
+                            <td> ${this.calculated_difference}</td>
+                        </tr>  
+                    </tbody>
+                </Table>
+
+                <Button onClick={this.sendDataToServer}>Send Data</Button>
+            </div>
                     <Button onClick={this.sendDataToServer}>Send Data</Button>
             </div>
         )
