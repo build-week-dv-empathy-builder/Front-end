@@ -140,8 +140,12 @@ class InputDemographics extends React.Component {
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="children">How many children do you have?</Label>
-                        <Input type="number" name="children" value={children} onChange={this.handleChange} />
+                        <Label for="children">Do you have children?</Label>
+                        <Input type="select" name="children" value={children} onChange={this.handleChange} >
+                            <option></option>
+                            <option>Yes</option>
+                            <option>No</option>                            
+                        </Input>
                     </FormGroup>
                 </Form>
             <Link to="/calculator/personal-budget" onClick={this.saveData}>Continue to next section</Link>
