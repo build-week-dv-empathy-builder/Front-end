@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap'
 
@@ -47,7 +47,7 @@ class App extends React.Component {
             name: fileName
         })
 
-        saveAs(fileToSave, fileName)
+        // saveAs(fileToSave, fileName)
         
     }
 
