@@ -58,7 +58,10 @@ class InputDemographics extends React.Component {
 
         return (
             <div className="demographics container">
-                <h1>INPUT DEMOGRAPHICS</h1>
+                <h2>Tell us about yourself</h2>
+                <article>
+                    <p>Please provide some basic information about yourself. This information will be anonymous and will not be sold or distributed to 3rd parties. Freefrom.org will use your information to better provide resources and assistance to those in need.</p>
+                </article>
                 <Form className="demographics-form">
                     <FormGroup>
                         <Label for="age">Age: </Label>

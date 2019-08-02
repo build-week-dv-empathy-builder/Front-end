@@ -57,9 +57,10 @@ class InputRelocationCosts extends React.Component {
 
         return (
             <div className="relocation-costs container">
-                <h1>INPUT RELOCATION COSTS</h1>
-                <br />
-
+                <h2>Relocation Costs</h2>
+                <article>
+                    <p>Why don't you move away? One of the most common questions people ask of domestic violience survivors. It sounds so simple, but in reality it isn't so easy to just move away. The biggest barrier is often cost. This calculator will provide a rough idea of just how much one would have to save to "just move away."</p>
+                </article>
                 <Form className="relocation-costs-form" onSubmit={ this.saveData }>
 
                     <Label for="travel_costs">Travel Cost(s): </Label>

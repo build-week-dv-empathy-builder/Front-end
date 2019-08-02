@@ -48,8 +48,10 @@ class InputPersonalBudget extends React.Component {
 
         return (
             <div className="personal-budget container">
-                <h1>INPUT PERSONAL BUDGET</h1>
-                <br />
+                <h2>Tell us about yourself</h2>
+                <article>
+                    <p>Please provide some basic information about your personal finances. This information will be anonymous and will not be sold or distributed to 3rd parties. Freefrom.org will use your information to better provide resources and assistance to those in need.</p>
+                </article>
                 <Form className="personal-budget-form">
                     <Label for="individual_income">Individual Income: </Label>
                     <Input 
@@ -152,7 +154,10 @@ class InputPersonalBudget extends React.Component {
                     <br />
                     
                 </Form>
-                <Link to="/calculator/relocation-costs" onClick={this.saveData}><Button id="app-nav-button">Next Section</Button></Link>
+                <div className="app-nav-container">
+                    <Link to="/calculator/demographics" onClick={this.saveData}><Button id="app-nav-button">{`${"<< "}`}Previous</Button></Link>
+                    <Link to="/calculator/relocation-costs" onClick={this.saveData}><Button id="app-nav-button">Next{`${" >>"}`}</Button></Link>
+                </div>
             </div>
         )
     }

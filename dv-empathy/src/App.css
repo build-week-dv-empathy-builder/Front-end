@@ -78,6 +78,12 @@ table {
 	padding: 6px 0;
 }
 
+.App h2 {
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding: 6px 0;
+}
+
 .App nav {
 	width: 100%;
 }
@@ -97,6 +103,10 @@ table {
 
 .App .nav .nav-links {
 	width: 25%;
+}
+
+.App article {
+	padding: 12px 0;
 }
 
 .App .nav-links a {
@@ -137,6 +147,12 @@ a:hover {
 
 .App #results-table {
 	
+}
+
+.App .app-nav-container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
 }
 
 .App #app-nav-button {
