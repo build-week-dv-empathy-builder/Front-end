@@ -161,6 +161,15 @@ a:hover {
 	
 }
 
+.App .form {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.App .form-group {
+	width: 48%
+}
+
 .App #pagination-nav {
 	display: flex;
 	flex-flow: row nowrap;
@@ -171,6 +180,12 @@ a:hover {
 	background-color: #53C3C5;
 	/* background-color: #EB6548; */
 	border: none;
+}
+
+
+.App input, .App select {
+	width: 90%;
+	border: 1px solid red;
 }
 
 /* END APP CSS */
