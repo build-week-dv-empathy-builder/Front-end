@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
+import { Button } from 'reactstrap'
 
 import '../home.css';
 
