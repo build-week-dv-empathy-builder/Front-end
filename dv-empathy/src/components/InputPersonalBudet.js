@@ -44,6 +44,10 @@ class InputPersonalBudget extends React.Component {
         }
     }
 
+    handleScroll = (event) => {
+        event.target.blur() //disables the input box value from incrementing when scrolling
+    }
+
     render() {
         const { individual_income, personal_savings, transportation, food, health_care, car_loans, personal_loans, personal_other } = this.state;
 
@@ -60,7 +64,8 @@ class InputPersonalBudget extends React.Component {
                         type="number" 
                         name="individual_income" 
                         value={ individual_income } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="IndividualIncome">
@@ -75,7 +80,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_savings" 
                         value={ personal_savings } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -86,7 +92,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="transportation" 
                         value={ transportation } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll} 
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="Transportation">
@@ -104,7 +111,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="food" 
                         value={ food } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="Food">
@@ -119,7 +127,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="health_care" 
                         value={ health_care } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -129,7 +138,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="car_loans" 
                         value={ car_loans } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -139,7 +149,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_loans" 
                         value={ personal_loans } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll} 
                     />
 
                     <br />
@@ -149,7 +160,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_other" 
                         value={ personal_other } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />

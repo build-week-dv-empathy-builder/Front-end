@@ -43,6 +43,10 @@ class InputDemographics extends React.Component {
         }
     }
 
+    handleScroll = (event) => {
+        event.target.blur() //disables the input box value from incrementing when scrolling
+    }
+
     render() {
         const { 
             age,
@@ -79,11 +83,11 @@ class InputDemographics extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="current_location">Current Location (Zip/Postal Code)</Label>
-                        <Input type="number" name ="current_location" value={current_location} onChange={this.handleChange} />
+                        <Input type="number" name ="current_location" value={current_location} onWheel={this.handleScroll} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="desired_relocation">Desired Location (Zip/Postal Code)</Label>
-                        <Input type="number" name ="desired_relocation" value={desired_relocation} onChange={this.handleChange} />
+                        <Input type="number" name ="desired_relocation" value={desired_relocation} onWheel={this.handleScroll} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="orientation">Orientation: </Label>

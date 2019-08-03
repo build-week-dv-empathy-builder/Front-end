@@ -52,6 +52,10 @@ class InputRelocationCosts extends React.Component {
         }
     }
 
+    handleScroll = (event) => {
+        event.target.blur() //disables the input box value from incrementing when scrolling
+    }
+
     render() {
         const { travel_costs, rental_deposit, utility_connection, storage_unit, rent, car_rental, cell_phone, moving_truck, mental_health, income_loss, additional_security, relocation_other } = this.state
 
@@ -70,6 +74,7 @@ class InputRelocationCosts extends React.Component {
                         name="travel_costs" 
                         value={ travel_costs } 
                         onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="TravelCosts">
@@ -77,17 +82,14 @@ class InputRelocationCosts extends React.Component {
                     <PopoverBody>Include Snacks, Gas, Eating out, Drinks, Extra money for incidentals.</PopoverBody>
                     </UncontrolledPopover>
 
-                    <br />
-
                     <Label for="rental_deposit">Rental Deposit: </Label>
                     <Input 
                         type="number" 
                         name="rental_deposit" 
                         value={ rental_deposit } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
-
-                    <br />
 
                     <Label for="utility_connection">Utility Connection: </Label>
                     <Input 
@@ -95,37 +97,33 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="utility_connection" 
                         value={ utility_connection } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="UtilityConnection">
                     <PopoverHeader>Utility Connections:</PopoverHeader>
                     <PopoverBody>Add all utility connections for final input.
-                    <br />
                     Include Gas, Water, Electricity.</PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="storage_unit">Storage Unit: </Label>
                     <Input 
                         type="number" 
                         name="storage_unit" 
                         value={ storage_unit } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
-
-                    <br />
 
                     <Label for="rent">Rent: </Label>
                     <Input 
                         type="number" 
                         name="rent" 
                         value={ rent } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
-
-                    <br />
 
                     <Label for="car_rental">Car Rental: </Label>
                     <Input 
@@ -133,17 +131,15 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="car_rental" 
                         value={ car_rental } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="CarRental">
                     <PopoverHeader>Car Rental:</PopoverHeader>
-                    <PopoverBody>Add all expenses needed to rent a car. 
-                    <br />
-                    Includes Car Rental, Gas during trip, Refill tank before returning, Insurance, Etc.</PopoverBody>
+                    <PopoverBody><p>Add all expenses needed to rent a car. </p>
+                    <p>Includes Car Rental, Gas during trip, Refill tank before returning, Insurance, Etc.</p></PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="cell_phone">Cell Phone: </Label>
                     <Input 
@@ -151,17 +147,15 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="cell_phone" 
                         value={ cell_phone } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="CellPhone">
                     <PopoverHeader>Cell Phone:</PopoverHeader>
-                    <PopoverBody>Add all expenses needed for switching over a cell phone. 
-                    <br />
-                    Includes: Disconnecting from pervious phone company if terminating early/out of contract/flex programs, Connection to new cell phone company, Cost of phone, Etc.</PopoverBody>
+                    <PopoverBody><p>Add all expenses needed for switching over a cell phone.</p> 
+                    <p>Includes: Disconnecting from pervious phone company if terminating early/out of contract/flex programs, Connection to new cell phone company, Cost of phone, Etc.</p></PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="moving_truck">Moving Truck: </Label>
                     <Input 
@@ -169,17 +163,15 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="moving_truck" 
                         value={ moving_truck } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="MovingTruck">
                     <PopoverHeader>Moving Truck:</PopoverHeader>
-                    <PopoverBody>Add all expenses needed for moving truck for total.
-                    <br />
-                    Includes Size of truck, Insurance, Mileage, Movers help, Gas for trip, Return of truck with full tank, Etc.</PopoverBody>
+                    <PopoverBody><p>Add all expenses needed for moving truck for total.</p>
+                    <p>Includes Size of truck, Insurance, Mileage, Movers help, Gas for trip, Return of truck with full tank, Etc.</p></PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="mental_health">Mental Health: </Label>
                     <Input 
@@ -187,16 +179,15 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="mental_health" 
                         value={ mental_health } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="MentalHealth">
                     <PopoverHeader>Mental Health:</PopoverHeader>
-                    <PopoverBody>Add all expenses associated with Mental Health help. <br />
-                    Includes Doctor's visits, Medications, Therapist/therapy, Travel to office/pharmacy, Wages lost due to time off work, Etc.</PopoverBody>
+                    <PopoverBody><p>Add all expenses associated with Mental Health help.</p>
+                    <p>Includes Doctor's visits, Medications, Therapist/therapy, Travel to office/pharmacy, Wages lost due to time off work, Etc.</p></PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="income_loss">Income Loss: </Label>
                     <Input 
@@ -204,17 +195,15 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="income_loss" 
                         value={ income_loss } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="IncomeLoss">
                     <PopoverHeader>Income Loss:</PopoverHeader>
-                    <PopoverBody>Add all and any loss of income for total.
-                    <br />
-                    Include Lost wages from leaving job, Spouse wage, Etc. </PopoverBody>
+                    <PopoverBody><p>Add all and any loss of income for total.</p>
+                    <p>Include Lost wages from leaving job, Spouse wage, Etc.</p> </PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="additional_security">Additional Security: </Label>
                     <Input 
@@ -222,15 +211,14 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="additional_security" 
                         value={ additional_security } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="Security">
                     <PopoverHeader>Additional Security:</PopoverHeader>
-                    <PopoverBody>Includes New service of home security system, Monthly payment, Equipment charge, Etc.</PopoverBody>
+                    <PopoverBody><p>Includes New service of home security system, Monthly payment, Equipment charge, Etc.</p></PopoverBody>
                     </UncontrolledPopover>
-
-                    <br />
 
                     <Label for="relocation_other">Other Relocation Cost(s): </Label>
                     <Input 
@@ -238,7 +226,8 @@ class InputRelocationCosts extends React.Component {
                         type="number" 
                         name="relocation_other" 
                         value={ relocation_other } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="RelocationOther">
