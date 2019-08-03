@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Button, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 import appDataStructure from '../appDataStructure' // these are the object properties the APP uses to iterate over object properties
 
 

@@ -41,10 +41,10 @@ class App extends React.Component {
             <Link exact to="/login">Login</Link>
           </div>
         </nav>
-        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
-        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
-        <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
-        <Route exact path="/calculator/results" render={() => <Calculator />} />
+        <Route path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
+        <Route path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
+        <Route path="/calculator/demographics" render={() => <InputDemographics />} />
+        <Route path="/calculator/results" render={() => <Calculator />} />
         <Route exact path="/" render={() => <Home className="home" />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
@@ -53,7 +53,7 @@ class App extends React.Component {
       </div>
     );
   }
-  }
+}
 
   
 
