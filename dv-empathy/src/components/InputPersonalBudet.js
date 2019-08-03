@@ -7,8 +7,10 @@ import {
     UncontrolledPopover, 
     PopoverHeader, 
     PopoverBody,
+    Popover
 } from 'reactstrap'
 import PaginationNav from './PaginationNav'
+import MiniCalculator from './MiniCalculator'
 
 class InputPersonalBudget extends React.Component {
     constructor() {
@@ -22,6 +24,7 @@ class InputPersonalBudget extends React.Component {
             car_loans: sessionStorage.getItem('car_loans'),
             personal_loans: sessionStorage.getItem('personal_loans'),
             personal_other: sessionStorage.getItem('personal_other'),
+            popoverOpen: false,
         }
     }
 
@@ -47,8 +50,16 @@ class InputPersonalBudget extends React.Component {
         event.target.blur() //disables the input box value from incrementing when scrolling
     }
 
+    togglePopOver = () => {
+        this.setState({
+            popoverOpen: !this.state.popoverOpen
+        })
+    }
+
     render() {
         const { individual_income, personal_savings, transportation, food, health_care, car_loans, personal_loans, personal_other } = this.state;
+
+        const transportationFields = ['Plane', 'Bus', 'Train', 'Other']
 
         return (
             <div className="personal-budget container">
@@ -92,11 +103,25 @@ class InputPersonalBudget extends React.Component {
                             onChange={ this.handleChange }
                             onWheel={this.handleScroll} 
                         />
-                        <UncontrolledPopover trigger="focus" placement="bottom" target="Transportation">
+                        <Popover 
+                            placement="bottom" 
+                            isOpen={this.state.popoverOpen} 
+                            target="Transportation" 
+                            toggle={this.togglePopOver}
+                            >
+                            <PopoverHeader>Transportation</PopoverHeader>
+                            <PopoverBody>
+                                <MiniCalculator fields={transportationFields}/>
+                            </PopoverBody>
+
+                        </Popover>
+                        {/* <UncontrolledPopover trigger="focus" placement="bottom" target="Transportation">
                             <PopoverHeader>Transportation:</PopoverHeader>
-                            <PopoverBody><p>Any and all expenses needed for transportation.</p>
-                            <p>Includes: Bus or train pass, Any other form of public transportation, Etc.</p></PopoverBody>
-                        </UncontrolledPopover>
+                            <PopoverBody>
+                                <p>Any and all expenses needed for transportation.</p>
+                                <p>Includes: Bus or train pass, Any other form of public transportation, Etc.</p>                         
+                            </PopoverBody>
+                        </UncontrolledPopover> */}
                     </FormGroup>
                     <FormGroup>
                         <Label for="food">Food: </Label>
