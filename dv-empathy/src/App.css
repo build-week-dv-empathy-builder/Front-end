@@ -64,10 +64,16 @@ table {
 }
 /* END Remove number arrows on number input boxes */
 
-textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+.App textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
     border-color: rgba( 235, 101, 72 , 0.8);
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba( 235, 101, 72 , 0.6);
 	outline: 0 none;	
+}
+
+.App .form-control:focus {
+	border-color: rgba( 235, 101, 72 , 0.8);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba( 235, 101, 72 , 0.6);
+	outline: 0 none;
 }
 
 .App {
@@ -185,8 +191,10 @@ a:hover {
 
 .App input, .App select {
 	width: 90%;
-	border: 1px solid red;
+
 }
+
+
 
 /* END APP CSS */
 
