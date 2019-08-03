@@ -1,10 +1,11 @@
 import React from 'react'
-import { Input, Label, Form, FormGroup, Button } from 'reactstrap'
+import { Input, Label, Form, FormGroup, Button, Pagination, PaginationItem,  } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import racedata from '../racedata'
 import orientationdata from '../genderdata'
 import sexdata from '../sexdata'
+import PaginationNav from './PaginationNav';
 
 class InputDemographics extends React.Component {
     constructor() {
@@ -151,10 +152,9 @@ class InputDemographics extends React.Component {
                         </Input>
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/personal-budget" onClick={this.saveData}><Button id="app-nav-button">Next Section</Button></Link>
+                <PaginationNav saveData={this.saveData} current="demographics" prev="/" next="/calculator/personal-budget"/> 
             </div>
         )
     }
 }
-
 export default InputDemographics

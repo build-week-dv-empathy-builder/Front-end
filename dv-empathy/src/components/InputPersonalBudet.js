@@ -9,6 +9,7 @@ import {
     Button,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import PaginationNav from './PaginationNav'
 
 class InputPersonalBudget extends React.Component {
     constructor() {
@@ -154,10 +155,7 @@ class InputPersonalBudget extends React.Component {
                     <br />
                     
                 </Form>
-                <div className="app-nav-container">
-                    <Link to="/calculator/demographics" onClick={this.saveData}><Button id="app-nav-button">{`${"<< "}`}Previous</Button></Link>
-                    <Link to="/calculator/relocation-costs" onClick={this.saveData}><Button id="app-nav-button">Next{`${" >>"}`}</Button></Link>
-                </div>
+                <PaginationNav saveData={this.saveData} current="personal-budget" prev="/calculator/demographics" next="/calculator/relocation-budget"/>
             </div>
         )
     }

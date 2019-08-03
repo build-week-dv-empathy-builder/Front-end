@@ -1,4 +1,5 @@
 import React from 'react'
+import PaginationNav from './PaginationNav'
 import { Link } from 'react-router-dom'
 import { 
     Input, 
@@ -7,9 +8,8 @@ import {
     UncontrolledPopover, 
     PopoverHeader, 
     PopoverBody,
-    Button
+    Button,
 } from 'reactstrap'
-import axios from 'axios'
 
 class InputRelocationCosts extends React.Component {
     constructor() {
@@ -247,8 +247,10 @@ class InputRelocationCosts extends React.Component {
                     </UncontrolledPopover>
 
                     <br />
-                    <Link to="./results" onClick={this.saveData}><Button id="app-nav-button">Get Results</Button></Link>
+                    
                 </Form>
+                <Link to="./results" onClick={this.saveData}><Button id="app-nav-button">Get Results</Button></Link>
+                <PaginationNav saveData={this.saveData} current="relocation-budget" prev="/calculator/personal-budget" next="/calculator/relocation-budget"/>
                 
             </div>
         )
