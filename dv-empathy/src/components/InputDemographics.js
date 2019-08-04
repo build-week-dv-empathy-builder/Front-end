@@ -67,7 +67,7 @@ class InputDemographics extends React.Component {
                 <article>
                     <p>Please provide some basic information about yourself. This information will be anonymous and will not be sold or distributed to 3rd parties. Freefrom.org will use your information to better provide resources and assistance to those in need.</p>
                 </article>
-                <Form className="demographics-form">
+                <Form className="demographics form">
                     <FormGroup>
                         <Label for="age">Age: </Label>
                         <Input type="number" name="age" value={age} onChange={this.handleChange} />
@@ -109,7 +109,7 @@ class InputDemographics extends React.Component {
                     </FormGroup>
                     
                     <FormGroup>
-                        <Label for="relationship_status">Relationship Status: </Label>
+                        <Label for="relationship_status">Relationship Status:</Label>
                         <Input type="select" name="relationship_status" value={relationship_status} onChange={this.handleChange} >
                             <option></option>
                             <option>Married</option>
