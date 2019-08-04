@@ -17,7 +17,6 @@ import './App.css';
 class App extends React.Component {
 
   login = (email, password) => {
-    console.log(`LOGGING IN: ${email}, ${password}`)
     const payload = {
       "email": email,
       "password": password
@@ -26,10 +25,9 @@ class App extends React.Component {
     return axios.post('https://empathy-builder-2.herokuapp.com/api/auth/login', payload)
       .then((res) => {
         localStorage.setItem('token', res.data.user.token)
-        console.log(`log in successfull: `, res.data.message)
       })
       .catch((err) => {
-        console.log(`ERROR LOGGING IN`, err)
+        console.log(`Error occurred when logging`, err)
       })
   }
 
@@ -43,10 +41,10 @@ class App extends React.Component {
             <Link exact to="/login">Login</Link>
           </div>
         </nav>
-        <Route exact path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
-        <Route exact path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
-        <Route exact path="/calculator/demographics" render={() => <InputDemographics />} />
-        <Route exact path="/calculator/results" render={() => <Calculator />} />
+        <Route path="/calculator/relocation-costs" render={() => <InputRelocationCosts />} />
+        <Route path="/calculator/personal-budget" render={() => <InputPersonalBudget />} />
+        <Route path="/calculator/demographics" render={() => <InputDemographics />} />
+        <Route path="/calculator/results" render={() => <Calculator />} />
         <Route exact path="/" render={() => <Home className="home" />} />
 
         <PrivateRoute exact path="/admin" component={AdminDash} />
@@ -55,7 +53,7 @@ class App extends React.Component {
       </div>
     );
   }
-  }
+}
 
   
 

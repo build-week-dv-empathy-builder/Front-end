@@ -52,6 +52,7 @@ table {
 
 /* START APP CSS */
 
+/* START Remove number arrows on number input boxes */
 .App Input[type=number]::-webkit-inner-spin-button,
 .App Input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
@@ -60,6 +61,13 @@ table {
 
 .App Input[type=number] {
 	-moz-appearance: textfield;
+}
+/* END Remove number arrows on number input boxes */
+
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba( 235, 101, 72 , 0.8);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba( 235, 101, 72 , 0.6);
+	outline: 0 none;	
 }
 
 .App {
@@ -113,6 +121,10 @@ table {
 	padding: 6px;
 }
 
+.App .pagination-nav {
+
+}
+
 .App .container {
 	width: 75%;
 	padding: 25px;
@@ -149,14 +161,15 @@ a:hover {
 	
 }
 
-.App .app-nav-container {
+.App #pagination-nav {
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 
 .App #app-nav-button {
-	background-color: #EB6548;
+	background-color: #53C3C5;
+	/* background-color: #EB6548; */
 	border: none;
 }
 

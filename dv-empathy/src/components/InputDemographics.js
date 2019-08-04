@@ -1,26 +1,27 @@
 import React from 'react'
-import { Input, Label, Form, FormGroup, Button } from 'reactstrap'
+import { Input, Label, Form, FormGroup, Button, Pagination, PaginationItem,  } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import racedata from '../racedata'
 import orientationdata from '../genderdata'
 import sexdata from '../sexdata'
+import PaginationNav from './PaginationNav';
 
 class InputDemographics extends React.Component {
     constructor() {
         super()
         this.state = {
-            current_location: localStorage.getItem('current_location'),
-            desired_relocation: localStorage.getItem('desired_relocation'),
-            sex: localStorage.getItem('sex'),
-            relationship_status: localStorage.getItem('relationship_status'),
-            orientation: localStorage.getItem('orientation'),
-            age: localStorage.getItem('age'),
-            race: localStorage.getItem('race'),
-            safe_status: localStorage.getItem('safe_status'),
-            employed: localStorage.getItem('employed'),
-            partner_employed: localStorage.getItem('partner_employed'),
-            children: localStorage.getItem('children'),
+            current_location: sessionStorage.getItem('current_location'),
+            desired_relocation: sessionStorage.getItem('desired_relocation'),
+            sex: sessionStorage.getItem('sex'),
+            relationship_status: sessionStorage.getItem('relationship_status'),
+            orientation: sessionStorage.getItem('orientation'),
+            age: sessionStorage.getItem('age'),
+            race: sessionStorage.getItem('race'),
+            safe_status: sessionStorage.getItem('safe_status'),
+            employed: sessionStorage.getItem('employed'),
+            partner_employed: sessionStorage.getItem('partner_employed'),
+            children: sessionStorage.getItem('children'),
         }
     }
 
@@ -37,9 +38,13 @@ class InputDemographics extends React.Component {
         const data = {...this.state}
         for(let property in data) {
             if(data.hasOwnProperty(property)) {
-                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+                sessionStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
             }
         }
+    }
+
+    handleScroll = (event) => {
+        event.target.blur() //disables the input box value from incrementing when scrolling
     }
 
     render() {
@@ -78,11 +83,11 @@ class InputDemographics extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="current_location">Current Location (Zip/Postal Code)</Label>
-                        <Input type="number" name ="current_location" value={current_location} onChange={this.handleChange} />
+                        <Input type="number" name ="current_location" value={current_location} onWheel={this.handleScroll} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="desired_relocation">Desired Location (Zip/Postal Code)</Label>
-                        <Input type="number" name ="desired_relocation" value={desired_relocation} onChange={this.handleChange} />
+                        <Input type="number" name ="desired_relocation" value={desired_relocation} onWheel={this.handleScroll} onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="orientation">Orientation: </Label>
@@ -151,10 +156,9 @@ class InputDemographics extends React.Component {
                         </Input>
                     </FormGroup>
                 </Form>
-            <Link to="/calculator/personal-budget" onClick={this.saveData}><Button id="app-nav-button">Next Section</Button></Link>
+                <PaginationNav saveData={this.saveData} current="demographics" prev="/" next="/calculator/personal-budget"/> 
             </div>
         )
     }
 }
-
 export default InputDemographics

@@ -9,19 +9,20 @@ import {
     Button,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import PaginationNav from './PaginationNav'
 
 class InputPersonalBudget extends React.Component {
     constructor() {
         super()
         this.state = {
-            individual_income: localStorage.getItem('individual_income'),
-            personal_savings: localStorage.getItem('personal_savings'),
-            transportation: localStorage.getItem('transportation'),
-            food: localStorage.getItem('food'),
-            health_care: localStorage.getItem('health_care'),
-            car_loans: localStorage.getItem('car_loans'),
-            personal_loans: localStorage.getItem('personal_loans'),
-            personal_other: localStorage.getItem('personal_other'),
+            individual_income: sessionStorage.getItem('individual_income'),
+            personal_savings: sessionStorage.getItem('personal_savings'),
+            transportation: sessionStorage.getItem('transportation'),
+            food: sessionStorage.getItem('food'),
+            health_care: sessionStorage.getItem('health_care'),
+            car_loans: sessionStorage.getItem('car_loans'),
+            personal_loans: sessionStorage.getItem('personal_loans'),
+            personal_other: sessionStorage.getItem('personal_other'),
         }
     }
 
@@ -34,13 +35,17 @@ class InputPersonalBudget extends React.Component {
     saveData = () => {        
         // Loop through each property in the clone of state (data)
         // Check if the property is this specficic class or a prototype property
-        // If the current property is its own property, store it in localStorage
+        // If the current property is its own property, store it in sessionStorage
         const data = {...this.state}
         for(let property in data) {
             if(data.hasOwnProperty(property)) {
-                localStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
+                sessionStorage.setItem(`${property}`, `${data[property]}`) // this is sweet
             }
         }
+    }
+
+    handleScroll = (event) => {
+        event.target.blur() //disables the input box value from incrementing when scrolling
     }
 
     render() {
@@ -59,7 +64,8 @@ class InputPersonalBudget extends React.Component {
                         type="number" 
                         name="individual_income" 
                         value={ individual_income } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="IndividualIncome">
@@ -74,7 +80,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_savings" 
                         value={ personal_savings } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -85,7 +92,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="transportation" 
                         value={ transportation } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll} 
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="Transportation">
@@ -103,7 +111,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="food" 
                         value={ food } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <UncontrolledPopover trigger="focus" placement="bottom" target="Food">
@@ -118,7 +127,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="health_care" 
                         value={ health_care } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -128,7 +138,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="car_loans" 
                         value={ car_loans } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
@@ -138,7 +149,8 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_loans" 
                         value={ personal_loans } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll} 
                     />
 
                     <br />
@@ -148,16 +160,14 @@ class InputPersonalBudget extends React.Component {
                         type="number"
                         name="personal_other" 
                         value={ personal_other } 
-                        onChange={ this.handleChange } 
+                        onChange={ this.handleChange }
+                        onWheel={this.handleScroll}
                     />
 
                     <br />
                     
                 </Form>
-                <div className="app-nav-container">
-                    <Link to="/calculator/demographics" onClick={this.saveData}><Button id="app-nav-button">{`${"<< "}`}Previous</Button></Link>
-                    <Link to="/calculator/relocation-costs" onClick={this.saveData}><Button id="app-nav-button">Next{`${" >>"}`}</Button></Link>
-                </div>
+                <PaginationNav saveData={this.saveData} current="personal-budget" prev="/calculator/demographics" next="/calculator/relocation-budget"/>
             </div>
         )
     }
