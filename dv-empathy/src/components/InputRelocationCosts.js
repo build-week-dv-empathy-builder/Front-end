@@ -247,9 +247,13 @@ class InputRelocationCosts extends React.Component {
                             <PopoverHeader>Relocation Other:</PopoverHeader>
                             <PopoverBody>Add any relocation costs that are not within the fields above.</PopoverBody>
                         </UncontrolledPopover>
-                    </FormGroup>                    
+                    </FormGroup>
+                    <FormGroup>
+                        <Link to="./results" onClick={this.saveData}><Button id="app-results-button">Get Results</Button></Link>
+                    </FormGroup>
+                                        
                 </Form>
-                <Link to="./results" onClick={this.saveData}><Button id="app-nav-button">Get Results</Button></Link>
+                
                 <PaginationNav saveData={this.saveData} current="relocation-budget" prev="/calculator/personal-budget" next="/calculator/relocation-budget"/>
             </div>
         )
