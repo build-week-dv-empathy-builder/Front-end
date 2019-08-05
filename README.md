@@ -1,3 +1,21 @@
+DV Empathy Builder
+
+Authors:
+Danielle Baxter (https://github.com/danibaxx)
+Travis Little (https://github.com/travislittle84)
+
+with Derrick Mei on the backend (https://github.com/Derrick-Mei)
+
+Technologies
+JavaScript
+React
+
+with..
+reactstrap (https://reactstrap.github.io/)
+bootstrap (https://getbootstrap.com/)
+file-saver (https://www.npmjs.com/package/file-saver/v/1.3.2)
+
+
 Pitch: Financial insecurity is the No. 1 reason survivors of domestic violence remain in or return to abuse. In order to break the cycle of violence, we must remove obstacles to financial security for survivors. To that end, FreeFrom (https://www.freefrom.org/) is developing an interactive calculator for their website. It will be an empathy and awareness-building calculator to help those not experiencing violence understand how much it would cost for them to leave their lives. It will include prompts to help users understand and identify the relevant costs.
 
 MVP:
