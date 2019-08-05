@@ -1,3 +1,27 @@
+DV Empathy Builder
+
+Authors:
+Danielle Baxter (https://github.com/danibaxx)
+Travis Little (https://github.com/travislittle84)
+
+with Derrick Mei on the backend (https://github.com/Derrick-Mei)
+
+Technologies
+JavaScript
+React
+
+with..
+reactstrap (https://reactstrap.github.io/)
+bootstrap (https://getbootstrap.com/)
+file-saver (https://www.npmjs.com/package/file-saver/v/1.3.2)
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
