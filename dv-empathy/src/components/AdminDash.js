@@ -61,9 +61,7 @@ class App extends React.Component {
             <h1>ADMIN DASHBOARD</h1>
             <div id="download-link">
 
-            </div>
-            {/* {this.state.dataReceived ? <Link to="text/json;charset=utf-8," + {this.state.data}>} */}
-    
+            </div>    
         </>
         );
     }

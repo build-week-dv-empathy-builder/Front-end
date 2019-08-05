@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Label, Form, FormGroup, Button } from 'reactstrap'
+import { Input, Form, FormGroup, Button } from 'reactstrap'
 
 class MiniCalculator extends React.Component {
     constructor(props) {
@@ -24,13 +24,8 @@ class MiniCalculator extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const fields = this.props.fields
-        const total = this.state.total
-
-
-        this.addAllValues()
-        
-        this.props.toggle()
+        this.addAllValues()        
+        this.props.toggle(event)
     }
 
     addAllValues = () => {
@@ -38,9 +33,7 @@ class MiniCalculator extends React.Component {
         let total = 0
         fields.forEach(field => {
             if(this.state[field]) {
-                console.log("test", this.state[field])
                 total = total + parseFloat(this.state[field])
-                console.log("test total", total)
             }
         })
         this.props.updateField(this.props.forProperty, total)
@@ -71,18 +64,6 @@ class MiniCalculator extends React.Component {
                 <Button type="submit" size="sm">Add Up</Button>
         </Form>
         )
-        
-        
-
-        // return (
-            
-        //     <FormGroup>
-        //         <Label for="field">Field</Label>
-        //         <Input type="number" name="field"></Input>
-        //     </FormGroup>
-        // )
-
-
     }
 }
 
