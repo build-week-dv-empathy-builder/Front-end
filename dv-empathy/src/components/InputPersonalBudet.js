@@ -4,7 +4,6 @@ import {
     Label, 
     Form,
     FormGroup,
-    UncontrolledPopover, 
     PopoverHeader, 
     PopoverBody,
     Popover
@@ -27,6 +26,15 @@ class InputPersonalBudget extends React.Component {
             personal_loans: sessionStorage.getItem('personal_loans'),
             personal_other: sessionStorage.getItem('personal_other'),
             popoverOpen: false,
+            individual_incomeOpen: false,
+            transportationOpen: false,
+            foodOpen:false,
+            health_careOpen: false,
+            personal_loansOpen: false,
+            personal_savingsOpen: false,
+            car_loansOpen: false,
+            personal_otherOpen: false,
+            
         }
     }
 
@@ -52,20 +60,22 @@ class InputPersonalBudget extends React.Component {
         event.target.blur() //disables the input box value from incrementing when scrolling
     }
 
-    togglePopOver = () => {
-        this.setState({
-            popoverOpen: !this.state.popoverOpen
-        })
+    togglePopOver = (event) => {
+        console.log('event', event)
+        if (event != null) {
+            this.setState({
+                [event.target.name + 'Open']: !this.state[event.target.name + 'Open'],
+                popoverOpen: !this.state.popoverOpen  
+            })
+        }
+        
     }
-
     handleWheel = (event) => {
         console.log("prevented")
         event.preventDefault()
     }
 
     updateField = (property, value) => {
-        console.log("update property name", property)
-        console.log("update value", value)
         this.setState({
             [property]: value
         })
@@ -84,9 +94,11 @@ class InputPersonalBudget extends React.Component {
         const { individual_income, personal_savings, transportation, food, health_care, car_loans, personal_loans, personal_other } = this.state;
 
         const transportationFields = ['Gas', 'Uber/Lyft/Taxi', 'Bus fares', 'Train/Subway fares', 'Other']
+        const individual_incomeFields = ['Main Income', 'Side Jobs', 'Other']
+        const foodFields = ['Groceries', 'Dining out', 'Pet food', 'Other']
+        const personal_otherFields = ['Netflix', 'Xbox/Playstation', 'Spotify', 'Other']
 
         return (
-            // <div className="personal-budget container" onWheel={this.handleWheel}>
             <div className="personal-budget container">
                 <h2>Tell us about yourself</h2>
                 <article>
@@ -101,12 +113,26 @@ class InputPersonalBudget extends React.Component {
                             name="individual_income" 
                             value={ individual_income } 
                             onChange={ this.handleChange }
-                            onWheel={this.handleScroll}
-                        />
-                        <UncontrolledPopover trigger="focus" placement="bottom" target="IndividualIncome">
-                            <PopoverHeader>Individual Income:</PopoverHeader>
-                            <PopoverBody><p>Add up any form of Income at a job, Side-job, Personal Projects that bring in extra income, Etc.</p></PopoverBody>
-                        </UncontrolledPopover>                        
+                            onKeyDown={this.preventTabbingIfOpen}
+                            // onWheel={this.handleScroll}
+                        /><img src={calculatorButton} alt="open-calculator" name="individual_income" id="individual-income-calc-button" className="calculator-button" />
+                        <Popover  
+                            isOpen={this.state['individual_income' + 'Open']} 
+                            target="individual-income-calc-button" 
+                            toggle={this.togglePopOver}
+                        >
+                            <PopoverHeader><div className="popover-header-container">Individual Income <img alt="close-window" onClick={this.togglePopOver} id="close-button" name="individual_income" src={closeButton}/></div></PopoverHeader>
+                            <PopoverBody>
+                                <p>Add up any form of Income at a job, Side-job, Personal Projects that bring in extra income, Etc.</p>
+                                <MiniCalculator
+                                    forProperty="individual_income" 
+                                    toggle={this.togglePopOver}
+                                    fields={individual_incomeFields}
+                                    updateField={this.updateField}
+                                />
+                            </PopoverBody>
+
+                        </Popover>
                     </FormGroup>
                     <FormGroup>
                         <Label for="personal_savings">Personal Savings: </Label>
@@ -128,16 +154,16 @@ class InputPersonalBudget extends React.Component {
                             onChange={ this.handleChange }
                             onKeyDown={this.preventTabbingIfOpen}
                             // onWheel={this.handleScroll} 
-                        /><img src={calculatorButton} id="transportation-calc-button" className="calculator-button" />
+                        /><img src={calculatorButton} alt="open-calculator" id="transportation-calc-button" name="transportation" className="calculator-button" />
                         <Popover  
-                            isOpen={this.state.popoverOpen} 
+                            isOpen={this.state['transportation' + 'Open']} 
                             target="transportation-calc-button" 
                             toggle={this.togglePopOver}
                         >
-                            <PopoverHeader><div className="popover-header-container">Transportation <img onClick={this.togglePopOver} id="close-button" src={closeButton}/></div></PopoverHeader>
+                            <PopoverHeader><div className="popover-header-container">Transportation <img alt="close-window" onClick={this.togglePopOver} id="close-button" name="transportation" src={closeButton}/></div></PopoverHeader>
                             <PopoverBody>
                                 <p>Add up any and all expenses needed for transportation.</p>
-                                <p>Includes: Bus or train pass, Any other form of public transportation, Etc.</p>
+                                <p>Includes: Ride sharing, any other form of public transportation..</p>
                                 <MiniCalculator
                                     forProperty="transportation" 
                                     toggle={this.togglePopOver}
@@ -147,29 +173,33 @@ class InputPersonalBudget extends React.Component {
                             </PopoverBody>
 
                         </Popover>
-                        
-                        {/* <UncontrolledPopover trigger="focus" placement="bottom" target="Transportation">
-                            <PopoverHeader>Transportation:</PopoverHeader>
-                            <PopoverBody>
-                                <p>Any and all expenses needed for transportation.</p>
-                                <p>Includes: Bus or train pass, Any other form of public transportation, Etc.</p>                         
-                            </PopoverBody>
-                        </UncontrolledPopover> */}
                     </FormGroup>
                     <FormGroup>
                         <Label for="food">Food: </Label>
                         <Input 
-                            id="Food"
                             type="number"
                             name="food" 
                             value={ food } 
                             onChange={ this.handleChange }
-                            onWheel={this.handleScroll}
-                        />
-                        <UncontrolledPopover trigger="focus" placement="bottom" target="Food">
-                        <PopoverHeader>Food:</PopoverHeader>
-                        <PopoverBody><p>Includes: Groceries, Dining out, Fast food, Etc.</p></PopoverBody>
-                        </UncontrolledPopover>
+                            onKeyDown={this.preventTabbingIfOpen}
+                            // onWheel={this.handleScroll}
+                        /><img src={calculatorButton} alt="open-calculator" name="food" id="food-calc-button" className="calculator-button" />
+                        <Popover  
+                            isOpen={this.state['food' + 'Open']} 
+                            target="food-calc-button" 
+                            toggle={this.togglePopOver}
+                        >
+                            <PopoverHeader><div className="popover-header-container">Food Expenses <img alt="close-window" onClick={this.togglePopOver} id="close-button" name="food" src={closeButton}/></div></PopoverHeader>
+                            <PopoverBody>
+                                <p>Add up your monthly food expenses, include dining out, and pets if you have them.</p>
+                                <MiniCalculator
+                                    forProperty="food" 
+                                    toggle={this.togglePopOver}
+                                    fields={foodFields}
+                                    updateField={this.updateField}
+                                />
+                            </PopoverBody>
+                        </Popover>
                     </FormGroup>
                     <FormGroup>
                         <Label for="health_care">Health Care: </Label>
@@ -209,7 +239,23 @@ class InputPersonalBudget extends React.Component {
                             value={ personal_other } 
                             onChange={ this.handleChange }
                             onWheel={this.handleScroll}
-                        />
+                        /><img src={calculatorButton} alt="open-calculator" name="personal_other" id="personal_other-calc-button" className="calculator-button" />
+                        <Popover  
+                            isOpen={this.state['personal_other' + 'Open']} 
+                            target="personal_other-calc-button" 
+                            toggle={this.togglePopOver}
+                        >
+                            <PopoverHeader><div className="popover-header-container">Other Expenses <img alt="close-window" onClick={this.togglePopOver} id="close-button" name="personal_other" src={closeButton}/></div></PopoverHeader>
+                            <PopoverBody>
+                                <p>Add up your other monthly expenses, such as streaming and other media subscriptions</p>
+                                <MiniCalculator
+                                    forProperty="personal_other" 
+                                    toggle={this.togglePopOver}
+                                    fields={personal_otherFields}
+                                    updateField={this.updateField}
+                                />
+                            </PopoverBody>
+                        </Popover>
                     </FormGroup>  
                 </Form>
                 <PaginationNav 
@@ -222,5 +268,4 @@ class InputPersonalBudget extends React.Component {
         )
     }
 }
-
 export default InputPersonalBudget
