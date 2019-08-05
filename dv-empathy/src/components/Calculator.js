@@ -107,11 +107,9 @@ class Calculator extends React.Component {
         axios.post('https://empathy-builder-2.herokuapp.com/api/insert', payload, { headers })
             .then((res) => {
                 sessionStorage.clear()
-                console.log("data sent")
             })
             .catch((err) => {
                 console.log("error sending data", err)
-
             })
     }
     
@@ -156,7 +154,6 @@ class Calculator extends React.Component {
                 </tbody>
             </Table>
         </div>
-
         )
     } 
 }

@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <nav className="nav">
-          <h1>Domestic Violence Empathy Builder</h1>
+          <h1>DV Relocation Calculator</h1>
           <div className="nav-links">
             <Link exact to="/">Home</Link>
             <Link exact to="/login">Login</Link>
@@ -54,7 +54,4 @@ class App extends React.Component {
     );
   }
 }
-
-  
-
 export default App;
